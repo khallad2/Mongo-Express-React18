@@ -1,4 +1,3 @@
-// frontend/src/components/CreateStoryForm.tsx
 import React, { useState } from 'react';
 import './CreateStoryForm.css';
 
@@ -58,7 +57,7 @@ const CreateStoryForm: React.FC = () => {
     return (
         <div className="card">
             <div className="card-content">
-                <h2>Create a New Story</h2>
+                <h3 className="form-title">Start New Story</h3>
                 <form onSubmit={handleSubmit} className="story-form">
                     <label className="form-label">Title:</label>
                     <input

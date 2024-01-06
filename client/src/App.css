@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f0fa; /* Light Lavender background color */
+  background-color: #312f2f; /* Light Lavender background color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +46,9 @@ body {
 
 .card-content {
   padding: 20px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .close-button {
@@ -67,4 +69,18 @@ body {
   .toggle-form-button {
     font-size: 1rem;
   }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
+}
+
+.form-container-wrapper {
+  display: flex;
+}
+
+.form-container {
+  flex: 1;
+  /* Additional styling for your form container */
 }
