@@ -36,7 +36,7 @@ const CreateStoryForm: React.FC = () => {
         // If there are no errors, proceed with the submission
         if (Object.keys(newErrors).length === 0) {
             // Implement logic to send a POST request to the backend
-            fetch(import.meta.env.VITE_SERVER_URL + '/api/stories/create', {
+            fetch(import.meta.env.VITE_SERVER_URL + '/stories/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

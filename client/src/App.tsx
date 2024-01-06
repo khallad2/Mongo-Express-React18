@@ -1,7 +1,7 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import CreateStoryForm from './components/story/CreateStoryForm.tsx';
 import './app.css';
+import StoryInteraction from "./components/story/StoryInteraction.tsx";
 
 const App: React.FC = () => {
     const [isFormVisible, setIsFormVisible] = useState(false);
@@ -22,7 +22,7 @@ const App: React.FC = () => {
                         <CreateStoryForm />
                     </div>
                     <div className={`form-container ${isFormVisible ? 'visible' : 'hidden'}`}>
-                        <CreateStoryForm />
+                        <StoryInteraction />
                     </div>
                 </div>
             </div>
