@@ -1,0 +1,40 @@
+/* src/StoryInteraction.css */
+
+/* Style the StoryInteraction component */
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #8a4ba8;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #882be5;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #8a4ba8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8e44ad;
+}

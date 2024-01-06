@@ -1,13 +1,14 @@
-// backend/src/models/Story.ts
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, {Schema, Document} from 'mongoose';
 
 interface IStory extends Document {
+    _id: Schema.Types.ObjectId;
     title: string;
     topic?: string;
-    sentences: string,
+    sentences: string[];  // Corrected: Change to an array of strings
 }
 
 const storySchema: Schema = new Schema({
+    _id: {type:  Schema.Types.ObjectId},
     title: { type: String, required: true },
     topic: { type: String },
     sentences: { type: [String], default: [] },

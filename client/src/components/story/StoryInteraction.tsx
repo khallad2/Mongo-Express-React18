@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
+import './StoryInteraction.css';
+import IStory from "../../interfaces/IStory.ts";
 const StoryInteraction: React.FC = () => {
-    const [stories, setStories] = useState<string[]>([]);
-    const [selectedStory, setSelectedStory] = useState<string>('');
+    const [stories, setStories] = useState<IStory[]>([]);
+    const [selectedStory, setSelectedStory] = useState<string>();
     const [previousSentence, setPreviousSentence] = useState<string>('');
     const [newSentence, setNewSentence] = useState<string>('');
 
     useEffect(() => {
         // Fetch the list of stories from the backend when the component mounts
-        // (You will need to replace 'your-backend-endpoint' with the actual endpoint)
         fetch(import.meta.env.VITE_SERVER_URL + '/stories/all')
             .then((response) => response.json())
             .then((data) => setStories(data))
@@ -17,12 +17,12 @@ const StoryInteraction: React.FC = () => {
 
     const handleStoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedStory = event.target.value;
-        setSelectedStory(selectedStory);
 
+        setSelectedStory(selectedStory);
         // Fetch the previous sentence for the selected story
         fetch(import.meta.env.VITE_SERVER_URL + `/stories/${selectedStory}/previous-sentence`)
             .then((response) => response.json())
-            .then((data) => setPreviousSentence(data.previousSentence))
+            .then((data) => setPreviousSentence(data.data.previousSentence))
             .catch((error) => console.error('Error fetching previous sentence:', error));
     };
 
@@ -51,8 +51,8 @@ const StoryInteraction: React.FC = () => {
             <select value={selectedStory} onChange={handleStoryChange}>
                 <option value="">Select a story</option>
                 {stories.map((story) => (
-                    <option key={story} value={story}>
-                        {story}
+                    <option key={story._id} value={story._id}>
+                        {story.title}
                     </option>
                 ))}
             </select>
