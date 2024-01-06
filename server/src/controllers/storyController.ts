@@ -58,7 +58,7 @@ class StoryController {
 
         try {
             const story = await Story.findOneAndUpdate(
-                { title: storyId },
+                { _id: storyId },
                 { $push: { sentences: newSentence } },
                 { new: true }
             );
