@@ -56,27 +56,32 @@ const CreateStoryForm: React.FC = () => {
 
     return (
         <div className="card">
-            <div className="card-content">
+            <div className="create-card-content">
                 <h3 className="form-title">Start New Story</h3>
                 <form onSubmit={handleSubmit} className="story-form">
-                    <label className="form-label">Title:</label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={formData.title}
-                        onChange={handleInputChange}
-                        className={`form-input ${errors.title ? 'invalid' : ''}`}
-                    />
-                    {errors.title && <p className="error-message">{errors.title}</p>}
+                    <div className="form-group">
+                        {/*<label className="form-label">Title:</label>*/}
+                        <input
+                            type="text"
+                            name="title"
+                            value={formData.title}
+                            onChange={handleInputChange}
+                            className={`create-form-input ${errors.title ? 'invalid' : ''}`}
+                            placeholder={'Title*'}
+                        />
+                        {errors.title && <p className="error-message">{errors.title}</p>}
+                    </div>
 
-                    <label className="form-label">Topic (optional):</label>
-                    <input
-                        type="text"
-                        name="topic"
-                        value={formData.topic}
-                        onChange={handleInputChange}
-                        className="form-input"
-                    />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            name="topic"
+                            value={formData.topic}
+                            onChange={handleInputChange}
+                            className="create-form-input"
+                            placeholder={'Topic'}
+                        />
+                    </div>
 
                     <button type="submit" className="form-button">
                         Create Story

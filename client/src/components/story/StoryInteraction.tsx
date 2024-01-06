@@ -60,35 +60,42 @@ const StoryInteraction: React.FC = () => {
     };
 
     return (
-        <div>
-            <select value={selectedStory} onChange={handleStorySelectionChange}>
-                <option value="">Select a story</option>
-                {stories.map((story) => (
-                    <option key={story._id} value={story._id}>
-                        {story.title}
-                    </option>
-                ))}
-            </select>
+        <div className="card form-container">
+            <div className="interaction-card-content">
+                <h3 className="sentence-title">Add to Story</h3>
+                <select className='select-form-input' value={selectedStory} onChange={handleStorySelectionChange}>
+                    <option value="">Select story</option>
+                    {stories.map((story) => (
+                        <option key={story._id} value={story._id}>
+                            {story.title}
+                        </option>
+                    ))}
+                </select>
+                {selectedStory && (
+                    <div>
+                        <form onSubmit={handleSentenceSubmit}>
+                            <input
+                                type="text"
+                                value={newSentence}
+                                onChange={(e) => {
+                                    setNewSentence(e.target.value);
+                                    setIsValidInput(true);
+                                }}
+                                className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
+                                placeholder={'Add Sentence'}
+                            />
+                            {!isValidInput && <p className="error-message">Input cannot be empty</p>}
+                            <div>
+                                <div className="hint-container">
+                                    <span className="hint-text">last Sentence: {previousSentence || 'No Sentences'}</span>
+                                </div>
+                            </div>
+                            <button type="submit" >Submit Sentence</button>
+                        </form>
+                    </div>
+                )}
+            </div>
 
-            {selectedStory && (
-                <div>
-                    <p>Previous Sentence: {previousSentence}</p>
-                    <form onSubmit={handleSentenceSubmit}>
-                        <label>Add a Sentence:</label>
-                        <input
-                            type="text"
-                            value={newSentence}
-                            onChange={(e) => {
-                                setNewSentence(e.target.value);
-                                setIsValidInput(true);
-                            }}
-                            className={`form-input ${isValidInput ? '' : 'invalid'}`}
-                        />
-                        {!isValidInput && <p className="error-message">Input cannot be empty</p>}
-                        <button type="submit">Submit Sentence</button>
-                    </form>
-                </div>
-            )}
         </div>
     );
 };

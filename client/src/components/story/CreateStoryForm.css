@@ -1,18 +1,15 @@
+.form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    width: 200rem;
+}
+
 .form-title {
     font-size: 2.5rem;
     color: #882be5; /* Light Purple */
-    margin-bottom: 20px;
-}
-
-.toggle-form-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #8a4ba8; /* Fancy Light Purple */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    /*margin-bottom: 20px;*/
 }
 
 .toggle-form-button:hover {
@@ -40,39 +37,39 @@
 /* Your existing styles */
 
 .card {
-    background-color: #f0f2f5; /* Light Lavender */
+    background-color: #e6dcf1; /* Light Lavender */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
-    /*max-width: 100%;*/
-    /*width: 100%;*/
+    max-width: 100%;
+    width: 100%;
     opacity: 0; /* Initially hidden */
     transition: opacity 1s ease-in-out; /* Fading transition */
-    width: 200rem;
+    padding: 1rem;
 }
 
 .form-container.visible .card {
     opacity: 1; /* Make visible when form is shown */
 }
 
-.card-content {
-    padding: 20px;
+.create-card-content {
     position: relative;
+    width: 100%;
 }
 
 .form-label {
     display: inline-flex;
-    padding: 10px;
+    /*padding: 10px;*/
     margin-bottom: 6px;
     color: #8a4ba8; /* Fancy Light Purple */
 }
 
-.form-input {
-    width: 80%;
-    padding: 10px;
+.create-form-input {
+    padding: 1rem;
     margin-bottom: 14px;
-    border: 1px solid #882be5; /* Light Gray border */
+    border: 1px solid #423152; /* Light Gray border */
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
+    width: 90%;
 }
 
 .form-input.invalid {
@@ -84,15 +81,16 @@
     margin-top: 6px;
 }
 
-.form-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #8a4ba8; /* Fancy Light Purple */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+/*.form-button {*/
+    /*width: 100%;*/
+    /*padding: 1rem;*/
+    /*font-size: 1rem;*/
+    /*color: white;*/
+    /*background-color: #8a4ba8; !* Fancy Light Purple *!*/
+    /*border: none;*/
+    /*!*border-radius: 4px;*!*/
+    /*cursor: pointer;*/
+    /*align-items: center;*/
+/*}*/
 
 /* Your existing styles */

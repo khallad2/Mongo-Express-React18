@@ -1,181 +1,46 @@
-/* src/app.css */
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #312f2f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.app-container {
-  text-align: center;
-}
+/* app.css */
 
 .app-title {
-  font-size: 4rem;
-  color: #8a4ba8;
+  font-size: 60px;
   margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+  color: #f4f4f5;
+  border-color: #8a4ba8;
 }
 
 .toggle-form-button {
-  padding: 12px 24px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #8a4ba8;
+  background-color: #8a4ba8; /* Green */
+  color: #fcfafd;
+  /*padding: 10px 20px;*/
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.card {
-  background-color: #f0f2f5;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.form-container.visible .card {
-  opacity: 1;
-}
-
-.card-content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
   cursor: pointer;
-  color: #8a4ba8;
-}
-
-@media only screen and (max-width: 600px) {
-  .app-title {
-    font-size: 1.5rem;
-  }
-
-  .toggle-form-button {
-    font-size: 1rem;
-  }
+  /*font-size: 16px;*/
+  /*margin-bottom: 20px;*/
+  width: 50%;
 }
 
 .row {
   display: flex;
+  width: 100%;
   justify-content: space-between;
 }
 
 .form-container-wrapper {
+  width: 100%;
   display: flex;
-}
-
-.form-container {
-  flex: 1;
-}
-
-/* src/CreateStoryForm.css */
-
-.form-title {
-  font-size: 2.5rem;
-  color: #882be5;
-  margin-bottom: 20px;
-}
-
-.toggle-form-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #8a4ba8;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.toggle-form-button:hover {
-  background-color: #8e44ad;
-}
-
-.form-container {
-  max-width: 100%;
-  width: 100%;
-  overflow: hidden;
-  transition: height 0.5s ease-in-out;
-}
-
-.form-container.visible {
-  height: auto;
-  margin-top: 20px;
-}
-
-.form-container.hidden {
-  height: 0;
-  margin-top: 0;
-  overflow: hidden;
-}
-
-.card {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.form-container.visible .card {
-  opacity: 1;
-}
-
-.form-content {
-  padding: 20px;
-}
-
-.form-label {
-  display: inline-flex;
-  padding: 10px;
-  margin-bottom: 6px;
-  color: #8a4ba8;
+  justify-content: space-between;
 }
 
 .form-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 14px;
+  width: 90%;
+  margin-bottom: 20px;
   border: 1px solid #882be5;
   border-radius: 4px;
-  transition: border-color 0.3s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
-.form-input.invalid {
-  border-color: #e53e3e;
-}
+/* You can keep the existing styles for .card and .card-content */
 
-.error-message {
-  color: #e53e3e;
-  margin-top: 6px;
-}
-
-.form-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.2rem;
-  color: white;
-  background-color: #8a4ba8;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* src/StoryInteraction.css */
-
-/* Add styles for StoryInteraction component following the same principles */
-
+/* Add styles for StoryInteraction component if needed */
