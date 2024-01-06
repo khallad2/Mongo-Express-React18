@@ -1,42 +1,70 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* src/app.css */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f0fa; /* Light Lavender background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-container {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-title {
+  font-size: 4rem;
+  color: #8a4ba8; /* Fancy Light Purple */
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.toggle-form-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #8a4ba8; /* Fancy Light Purple */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 .card {
-  padding: 2em;
+  background-color: #312f2f;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+  max-width: 400px;
+  width: 100%;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 1s ease-in-out; /* Fading transition */
 }
 
-.read-the-docs {
-  color: #888;
+.form-container.visible .card {
+  opacity: 1; /* Make visible when form is shown */
+}
+
+.card-content {
+  padding: 20px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #8a4ba8; /* Fancy Light Purple */
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .toggle-form-button {
+    font-size: 1rem;
+  }
 }
