@@ -48,6 +48,10 @@ class StoryController {
         const { storyId } = req.params;
         const { newSentence } = req.body;
         try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ success: false, errors: errors.array() });
+            }
             const result = await storyService.addSentence(storyId, newSentence);
             res.status(201).json(result);
         } catch (error) {

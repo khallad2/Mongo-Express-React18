@@ -38,3 +38,8 @@ button {
 button:hover {
     background-color: #8e44ad;
 }
+
+
+.form-input.invalid {
+    border-color: #e53e3e; /* Red border for invalid input */
+}

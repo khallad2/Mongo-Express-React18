@@ -18,5 +18,7 @@ router.post('/create', [
 
 router.get('/all', listStoriesRoute(StoryController));
 router.get('/:storyId/previous-sentence', getPreviousSentenceRoute(StoryController));
-router.post('/:storyId/add-sentence', addSentenceRoute(StoryController));
+router.post('/:storyId/add-sentence', [
+        body('newSentence').notEmpty().withMessage('Sentence is required'),
+],addSentenceRoute(StoryController));
 export default router;
