@@ -5,12 +5,16 @@ interface IStory extends Document {
     title: string;
     topic?: string;
     sentences: string[];  // Corrected: Change to an array of strings
+    storyKey: string;
+    invitedFriends: string[]; // Store user IDs or usernames
 }
 
 const storySchema: Schema = new Schema({
     title: { type: String, required: true },
     topic: { type: String },
     sentences: { type: [String], default: [] },
+    storyKey: { type: String, unique: true },
+    invitedFriends: { type: [String], default: [] },
 });
 
 const Story = mongoose.model<IStory>('Story', storySchema);

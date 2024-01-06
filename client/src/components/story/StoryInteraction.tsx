@@ -75,13 +75,13 @@ const StoryInteraction: React.FC = () => {
                     <div>
                         <form onSubmit={handleSentenceSubmit}>
                             <input
-                                type="text"
+                                type="textArea"
                                 value={newSentence}
                                 onChange={(e) => {
                                     setNewSentence(e.target.value);
                                     setIsValidInput(true);
                                 }}
-                                className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
+                                className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
                                 placeholder={'Add Sentence'}
                             />
                             {!isValidInput && <p className="error-message">Input cannot be empty</p>}

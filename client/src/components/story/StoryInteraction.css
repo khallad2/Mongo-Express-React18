@@ -6,16 +6,16 @@
 @media only screen and (max-width: 600px) {
     .form-container {
         flex-direction: column;
-        width: 100%;
+        width: 90%;
     }
 
     .interaction-form-input,
     .select-form-input {
-        width: 100%;
+        width: 90%;
     }
 
     .hint-container {
-        margin: 5% 5% 1% 5%;
+        margin: 20% 5% 1% 5%;
         width: 90%;
     }
 }
@@ -41,7 +41,9 @@ label {
     border: 1px solid #423152;
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
-    /*width: 90%;*/
+    width: 95%;
+    display: flex;
+    position: relative;
 }
 
 .select-form-input {
@@ -50,7 +52,7 @@ label {
     border: 1px solid #423152;
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
-    width: 93%;
+    width: 100%;
 }
 
 button {
@@ -91,7 +93,7 @@ button:hover {
 }
 
 .hint-container {
-    margin: 5% 20% 1% 8%;
+    margin: 15% 50% 1% 8%;
     width: 80%;
     transform: translate(0, -50%);
     background-color: rgba(255, 255, 255, 0.9);
