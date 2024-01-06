@@ -12,10 +12,6 @@
     /*margin-bottom: 20px;*/
 }
 
-.toggle-form-button:hover {
-    background-color: #8e44ad; /* Darker Purple for hover */
-}
-
 .form-container {
     max-width: 100%;
     width: 100%;

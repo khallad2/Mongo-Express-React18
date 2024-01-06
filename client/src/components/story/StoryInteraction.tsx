@@ -62,9 +62,9 @@ const StoryInteraction: React.FC = () => {
     return (
         <div className="card form-container">
             <div className="interaction-card-content">
-                <h3 className="sentence-title">Add to Story</h3>
+                <h3 className="sentence-title">Join Story</h3>
                 <select className='select-form-input' value={selectedStory} onChange={handleStorySelectionChange}>
-                    <option value="">Select story</option>
+                    <option value="">Available open stories</option>
                     {stories.map((story) => (
                         <option key={story._id} value={story._id}>
                             {story.title}

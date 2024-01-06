@@ -4,28 +4,41 @@ import './app.css';
 import StoryInteraction from "./components/story/StoryInteraction.tsx";
 
 const App: React.FC = () => {
-    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [isCreateFormVisible, setIsFormVisible] = useState(false);
+    const [isInteractionStoryFormVisible, setInteractionStoryFormVisible] = useState(false);
+    const toggleInteractionStoryFormVisibility = () => {
+        setInteractionStoryFormVisible(!isInteractionStoryFormVisible);
+        setIsFormVisible(false);
+    };
 
-    const toggleFormVisibility = () => {
-        setIsFormVisible(!isFormVisible);
+    const toggleCreateStoryFormVisibility = () => {
+        setIsFormVisible(!isCreateFormVisible);
+        setInteractionStoryFormVisible(false)
     };
 
     return (
         <div className="app-container">
             <h1 className="app-title">One Line Story</h1>
-            <button className="toggle-form-button" onClick={toggleFormVisibility}>
-                {isFormVisible ? 'Hide' : 'Start Game'}
-            </button>
             <div className="row">
                 <div className="form-container-wrapper">
-                    <div className={`form-container ${isFormVisible ? 'visible' : 'hidden'}`}>
-                        <CreateStoryForm />
-                    </div>
-                    <div className={`form-container ${isFormVisible ? 'visible' : 'hidden'}`}>
-                        <StoryInteraction />
-                    </div>
+                    <button className="toggle-form-button" onClick={toggleCreateStoryFormVisibility}>
+                        {isCreateFormVisible ? 'Hide' : 'Add Story'}
+                    </button>
+                    <button className="toggle-form-button" onClick={toggleInteractionStoryFormVisibility}>
+                        {isInteractionStoryFormVisible ? 'Hide' : 'Join Story'}
+                    </button>
                 </div>
             </div>
+            {/*<div className="row">*/}
+                {/*<div className="form-container-wrapper">*/}
+                    <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
+                        <CreateStoryForm />
+                    </div>
+                    <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
+                        <StoryInteraction />
+                    </div>
+                {/*</div>*/}
+            {/*</div>*/}
         </div>
     );
 };
