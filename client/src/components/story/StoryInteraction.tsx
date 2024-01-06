@@ -38,7 +38,7 @@ const StoryInteraction: React.FC = () => {
             .then((response) => response.json())
             .then((data) => {
                 // Update the previous sentence and clear the input field
-                setPreviousSentence(data.previousSentence);
+                setPreviousSentence(data.data.previousSentence);
                 setNewSentence('');
             })
             .catch((error) => console.error('Error submitting sentence:', error));
@@ -46,8 +46,6 @@ const StoryInteraction: React.FC = () => {
 
     return (
         <div>
-            <h2>Story Interaction</h2>
-            <label>Select a Story:</label>
             <select value={selectedStory} onChange={handleStoryChange}>
                 <option value="">Select a story</option>
                 {stories.map((story) => (
