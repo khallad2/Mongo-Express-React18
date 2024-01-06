@@ -1,3 +1,5 @@
+// CreateStoryForm.tsx
+
 import React, { useState } from 'react';
 import './CreateStoryForm.css';
 
@@ -13,6 +15,7 @@ const CreateStoryForm: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
+    const [feedback, setFeedback] = useState<string | null>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -47,9 +50,15 @@ const CreateStoryForm: React.FC = () => {
                 .then((result) => {
                     console.log(result);
                     // Handle success or error messages as needed
+                    if (result.success === true) {
+                        setFeedback('Story created successfully!');
+                    } else {
+                        setFeedback('Error creating story. Please try again.');
+                    }
                 })
                 .catch((error) => {
                     console.error('Error creating story:', error);
+                    setFeedback('Error creating story. Please try again.');
                 });
         }
     };
@@ -60,7 +69,6 @@ const CreateStoryForm: React.FC = () => {
                 <h3 className="form-title">New Story</h3>
                 <form onSubmit={handleSubmit} className="story-form">
                     <div className="form-group">
-                        {/*<label className="form-label">Title:</label>*/}
                         <input
                             type="text"
                             name="title"
@@ -86,6 +94,8 @@ const CreateStoryForm: React.FC = () => {
                     <button type="submit" className="form-button">
                         Create Story
                     </button>
+
+                    {feedback && <p className="success-feedback">{feedback}</p>}
                 </form>
             </div>
         </div>

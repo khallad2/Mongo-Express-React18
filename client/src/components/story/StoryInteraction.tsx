@@ -60,7 +60,7 @@ const StoryInteraction: React.FC = () => {
     };
 
     return (
-        <div className="card form-container">
+        <div className="card">
             <div className="interaction-card-content">
                 <h3 className="sentence-title">Join Story</h3>
                 <select className='select-form-input' value={selectedStory} onChange={handleStorySelectionChange}>

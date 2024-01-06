@@ -77,16 +77,96 @@
     margin-top: 6px;
 }
 
-/*.form-button {*/
+/* Your existing styles */
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    max-width: 100%;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+}
+
+.form-title {
+    font-size: 2.5rem;
+    color: #882be5;
+}
+
+.card {
+    background-color: #e6dcf1;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding: 1rem;
+}
+
+.form-container.visible .card {
+    opacity: 1;
+}
+
+.create-card-content {
+    position: relative;
+    width: 100%;
+}
+
+.form-label {
+    display: inline-flex;
+    margin-bottom: 6px;
+    color: #8a4ba8;
+}
+
+.create-form-input {
+    margin-bottom: 14px;
+    border: 1px solid #423152;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
     /*width: 100%;*/
-    /*padding: 1rem;*/
-    /*font-size: 1rem;*/
-    /*color: white;*/
-    /*background-color: #8a4ba8; !* Fancy Light Purple *!*/
-    /*border: none;*/
-    /*!*border-radius: 4px;*!*/
-    /*cursor: pointer;*/
-    /*align-items: center;*/
-/*}*/
+}
+
+.form-input.invalid {
+    border-color: #e53e3e;
+}
+
+.error-message {
+    color: #e53e3e;
+    margin-top: 6px;
+}
+
+.form-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #8a4ba8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .form-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-title {
+        font-size: 2rem;
+    }
+
+    .create-form-input {
+        width: 80%;
+    }
+}
 
 /* Your existing styles */
+.success-feedback {
+    color: #4caf50; /* Green color for success feedback */
+    margin-top: 10px;
+}

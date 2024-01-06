@@ -29,16 +29,14 @@ const App: React.FC = () => {
                     </button>
                 </div>
             </div>
-            {/*<div className="row">*/}
-                {/*<div className="form-container-wrapper">*/}
-                    <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
-                        <CreateStoryForm />
-                    </div>
-                    <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
-                        <StoryInteraction />
-                    </div>
-                {/*</div>*/}
-            {/*</div>*/}
+
+            <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
+                {isCreateFormVisible && <CreateStoryForm />}
+            </div>
+
+            <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
+                {isInteractionStoryFormVisible && <StoryInteraction />}
+            </div>
         </div>
     );
 };

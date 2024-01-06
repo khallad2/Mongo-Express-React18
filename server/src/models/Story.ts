@@ -8,7 +8,6 @@ interface IStory extends Document {
 }
 
 const storySchema: Schema = new Schema({
-    _id: {type:  Schema.Types.ObjectId},
     title: { type: String, required: true },
     topic: { type: String },
     sentences: { type: [String], default: [] },
