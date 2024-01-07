@@ -72,7 +72,6 @@ const StoryInteraction: React.FC = () => {
                     ))}
                 </select>
                 {selectedStory && (
-                    <div>
                         <form onSubmit={handleSentenceSubmit}>
                             <input
                                 type="textArea"
@@ -92,7 +91,6 @@ const StoryInteraction: React.FC = () => {
                             </div>
                             <button type="submit" >Submit Sentence</button>
                         </form>
-                    </div>
                 )}
             </div>
 

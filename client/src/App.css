@@ -29,7 +29,6 @@
   margin-bottom: 20px;
   border: 1px solid #882be5;
   border-radius: 4px;
-  transition: opacity 1s ease-in-out;
 }
 
 /* You can keep the existing styles for .card and .card-content */
@@ -55,6 +54,7 @@
   cursor: pointer;
   width: 30%;
   margin: 0.1rem;
+  transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
 
 .row {
@@ -67,6 +67,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
 
 .form-input {
@@ -85,6 +86,7 @@
 
   .toggle-form-button {
     width: 100%;
+    transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
   }
 
   .form-input {
@@ -95,3 +97,25 @@
 /* Your existing styles for .card and .card-content */
 
 /* Add styles for StoryInteraction component if needed */
+/* app.css */
+.form-container {
+  opacity: 0; /* Start with opacity set to 0 */
+  transition: opacity 1s ease-in-out; /* Transition opacity over 1 second with ease-in-out timing function */
+}
+
+.form-container.visible {
+  opacity: 1; /* Set opacity to 1 when the form is visible */
+}
+
+.toggle-form-button {
+  background-color: #8a4ba8;
+  color: #fcfafd;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 30%;
+  margin: 0.1rem;
+  transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
+}
+
+/* Your existing styles... */

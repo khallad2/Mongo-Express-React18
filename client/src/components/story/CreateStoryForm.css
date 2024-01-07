@@ -1,22 +1,7 @@
-.form-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 5px;
-    width: 200rem;
-}
-
 .form-title {
     font-size: 2.5rem;
     color: #882be5; /* Light Purple */
     /*margin-bottom: 20px;*/
-}
-
-.form-container {
-    max-width: 100%;
-    width: 100%;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
 }
 
 .form-container.visible {
@@ -78,16 +63,6 @@
 }
 
 /* Your existing styles */
-
-.form-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 5px;
-    max-width: 100%;
-    overflow: hidden;
-    transition: height 0.5s ease-in-out;
-}
 
 .form-title {
     font-size: 2.5rem;
