@@ -131,9 +131,9 @@ const StoryInteraction: React.FC = () => {
                             {isStoryCompleted && (
                                 <p className="completed-feedback">The story has been successfully completed!</p>
                             )}
-                            <button className={isStoryCompleted ? 'disabled' : ''} type="submit" disabled={isStoryCompleted}>Submit Sentence</button>
+                            <button className={isStoryCompleted ? 'disabled' : 'end-button'} type="submit" disabled={isStoryCompleted}>Submit Sentence</button>
                             <button
-                                className={isStoryCompleted ? 'disabled' : ''}
+                                className={isStoryCompleted ? 'disabled' : 'end-button'}
                                 onClick={handleEndStory} value={selectedStory._id}
                                 disabled={isStoryCompleted}>End Story</button>
                             {isStoryCompleted && (

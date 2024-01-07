@@ -51,7 +51,7 @@ const CreateStoryForm: React.FC = () => {
                     console.log(result);
                     // Handle success or error messages as needed
                     if (result.success === true) {
-                        setFeedback('Story created successfully!');
+                        setFeedback('Story created successfully, Join Story to add sentence!');
                     } else {
                         setFeedback('Error creating story. Please try again.');
                     }
