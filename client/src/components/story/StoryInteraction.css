@@ -149,3 +149,7 @@ button:hover {
 .end-button{
     margin: 10px 10px 10px 10px;
 }
+
+.disabled {
+    display: none;
+}

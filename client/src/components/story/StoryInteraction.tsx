@@ -104,7 +104,7 @@ const StoryInteraction: React.FC = () => {
             <div className="interaction-card-content">
                 <h3 className="sentence-title">Join Story</h3>
                 <select className='select-form-input' value={selectedStory?._id} onChange={handleStorySelectionChange}>
-                    <option value="">Available open stories</option>
+                    <option value="">Select Stories</option>
                     {stories.map((story) => (
                         <option key={story._id} value={story._id}  >
                             {story.title} {story.isComplete && '  - Completed'}
@@ -131,14 +131,17 @@ const StoryInteraction: React.FC = () => {
                             {isStoryCompleted && (
                                 <p className="completed-feedback">The story has been successfully completed!</p>
                             )}
-                            <button type="submit" >Submit Sentence</button>
-                            <button className='end-button' onClick={handleEndStory} value={selectedStory._id}>End Story</button>
+                            <button className={isStoryCompleted ? 'disabled' : ''} type="submit" disabled={isStoryCompleted}>Submit Sentence</button>
+                            <button
+                                className={isStoryCompleted ? 'disabled' : ''}
+                                onClick={handleEndStory} value={selectedStory._id}
+                                disabled={isStoryCompleted}>End Story</button>
                             {isStoryCompleted && (
                                 <button
                                     className={showNarrative ? 'hide-button' : 'view-button'}
                                     onClick={handleViewNarrative}
                                 >
-                                    {showNarrative ? 'Hide Narrative' : 'View Narrative'}
+                                    {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
                                 </button>
                             )}
                         </form>
@@ -147,7 +150,6 @@ const StoryInteraction: React.FC = () => {
 
             {showNarrative && selectedStory && (
             <div className='hint-container'>
-                <button className='end-button' onClick={handleEndStory} >End Story</button>
                 {/* Use a dynamic className to set button color based on showNarrative state */}
                     <div className='hint-text'>
                         <p>{getAllSentences()}</p>
