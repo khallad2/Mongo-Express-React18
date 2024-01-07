@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import storyService from '../services/storyService';
 import { validationResult } from 'express-validator';
+import StoryService from "../services/storyService";
 class StoryController {
     async createStory(req: Request, res: Response) {
         try {
@@ -55,6 +56,20 @@ class StoryController {
         } catch (error) {
             console.error('Error adding sentence:', error);
             res.status(500).json({ error: 'Internal server error' });
+        }
+    }
+
+    async endStory(req: Request, res: Response) {
+        try {
+            const { storyId } = req.params;
+
+            // Mark the story as complete
+            const completedStory = await StoryService.endStory(storyId);
+
+            res.status(200).json({ success: true, data: completedStory });
+        } catch (error) {
+            console.error('Error ending story:', error);
+            res.status(500).json({ success: false, message: 'Internal server error' });
         }
     }
 }

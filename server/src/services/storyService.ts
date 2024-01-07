@@ -55,6 +55,11 @@ class StoryService {
             throw new Error('Internal server error');
         }
     }
+
+    async endStory(storyId: string) {
+        const completedStory = await Story.findByIdAndUpdate(storyId, { isComplete: true }, { new: true });
+        return completedStory;
+    }
 }
 
 export default new StoryService;

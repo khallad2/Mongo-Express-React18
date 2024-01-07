@@ -77,9 +77,10 @@ button:hover {
 .form-container {
 }
 
-.interaction-card-content {
+.card {
     position: relative;
     width: 100%;
+    padding-right: 30px;
 }
 
 .sentence-title {
@@ -88,11 +89,10 @@ button:hover {
 }
 
 .hint-container {
-    margin: 10% 10% 1% 8%;
+    margin: 10% 10% 0 5%;
     width: 80%;
     transform: translate(0, -50%);
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     z-index: 999;
@@ -100,6 +100,7 @@ button:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .hint-text {
@@ -114,7 +115,7 @@ button:hover {
     /*justify-content: center;*/
     /*align-items: center;*/
     padding: 1rem;
-    /*margin-bottom: 14px;*/
+    margin-bottom: 14px;
     border: 1px solid #423152;
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
@@ -143,4 +144,8 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
     margin: 20px;
+}
+
+.end-button{
+    margin: 10px 10px 10px 10px;
 }

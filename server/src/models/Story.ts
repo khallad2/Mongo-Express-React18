@@ -6,6 +6,7 @@ interface IStory extends Document {
     sentences: string[];
     storyKey: string;
     invitedFriends: string[]; // Store user IDs or usernames
+    isComplete: boolean;
 }
 
 const storySchema: Schema = new Schema({
@@ -14,6 +15,7 @@ const storySchema: Schema = new Schema({
     sentences: { type: [String], default: [] },
     storyKey: { type: String, unique: true },
     invitedFriends: { type: [String], default: [] },
+    isComplete: { type: Boolean , default: false},
 });
 
 const Story = mongoose.model<IStory>('Story', storySchema);

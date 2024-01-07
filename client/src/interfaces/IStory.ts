@@ -3,6 +3,7 @@ interface IStory extends Document {
     title: string;
     topic?: string;
     sentences: string[],
+    isComplete: boolean
 }
 
 export default IStory;
