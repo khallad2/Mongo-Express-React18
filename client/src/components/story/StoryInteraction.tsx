@@ -55,7 +55,8 @@ const StoryInteraction: React.FC = () => {
             console.error('Error submitting sentence:', error);
         }
     };
-    const handleViewNarrative = () => {
+    const handleViewNarrative = (e: React.FormEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         setShowNarrative(!showNarrative);
     };
     const getAllSentences = () => {
