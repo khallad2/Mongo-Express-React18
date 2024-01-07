@@ -11,6 +11,8 @@ const Update: React.FC = () => {
     const [isValidInput, setIsValidInput] = useState<boolean>(true);
     const [showNarrative, setShowNarrative] = useState<boolean>(false); // Added state for showing narrative
     const [isStoryCompleted, setIsStoryCompleted] = useState<boolean>(false);
+    const [storyLink, setStoryLink] = useState<string>('');
+
     useEffect(() => {
         // Fetch the list of stories from the backend when the component mounts
         fetchAllStories();
@@ -27,8 +29,10 @@ const Update: React.FC = () => {
         const selectedStoryId = event.target.value;
         const selectedStoryObject = stories.find((story) => story._id === selectedStoryId) || null;
         const completed = selectedStoryObject?.isComplete || false;
+        const storyLink  = selectedStoryObject?.link || '';
         setIsStoryCompleted(completed);
         setSelectedStory(selectedStoryObject);
+        setStoryLink(storyLink);
         if (selectedStoryObject) {
             // Fetch the previous sentence for the selected story
             await fetch(import.meta.env.VITE_SERVER_URL + `/stories/${selectedStoryId}/previous-sentence`)
@@ -81,8 +85,8 @@ const Update: React.FC = () => {
     };
 
     const handleEndStory = (e: React.FormEvent<HTMLButtonElement>) => {
-        const selectedStoryId = selectedStory?._id
         e.preventDefault();
+        const selectedStoryId = selectedStory?._id
         // Call the backend API to end the story
         fetch(`${import.meta.env.VITE_SERVER_URL}/stories/${selectedStoryId}/end`, {
             method: 'POST',
@@ -152,6 +156,7 @@ const Update: React.FC = () => {
             <div className='hint-container'>
                     <div className='hint-text'>
                         <p>{getAllSentences()}</p>
+                        <p>link: {storyLink}</p>
                     </div>
             </div>
             )}
