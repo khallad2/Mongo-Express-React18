@@ -19,8 +19,6 @@ class StoryService {
             throw new Error('Internal server error');
         }
     }
-
-    // todo move to sentences service
     async getPreviousSentence(storyId: string) {
         try {
             const story = await Story.findById(storyId );

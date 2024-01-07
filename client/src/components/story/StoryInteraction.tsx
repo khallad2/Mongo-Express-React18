@@ -150,7 +150,6 @@ const StoryInteraction: React.FC = () => {
 
             {showNarrative && selectedStory && (
             <div className='hint-container'>
-                {/* Use a dynamic className to set button color based on showNarrative state */}
                     <div className='hint-text'>
                         <p>{getAllSentences()}</p>
                     </div>
