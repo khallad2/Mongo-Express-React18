@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './StoryInteraction.css';
-import IStory from '../../interfaces/IStory.ts';
+import IStory from '../../interfaces/IStory.tsx';
 
 const StoryInteraction: React.FC = () => {
     const [stories, setStories] = useState<IStory[]>([]);
@@ -100,7 +100,7 @@ const StoryInteraction: React.FC = () => {
             });
     };
     return (
-        <div className="card">
+        <div className="interaction-card">
             <div className="interaction-card-content">
                 <h3 className="sentence-title">Join Story</h3>
                 <select className='select-form-input' value={selectedStory?._id} onChange={handleStorySelectionChange}>

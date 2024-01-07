@@ -17,13 +17,12 @@
 
 /* Your existing styles */
 
-.card {
+.create-card {
     background-color: #e6dcf1; /* Light Lavender */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
     max-width: 100%;
     width: 100%;
-    opacity: 0; /* Initially hidden */
     transition: opacity 1s ease-in-out; /* Fading transition */
     padding: 1rem;
 }

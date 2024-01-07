@@ -2,14 +2,10 @@
 
 import React, { useState } from 'react';
 import './CreateStoryForm.css';
-
-interface StoryForm {
-    title: string;
-    topic?: string;
-}
+import IStoryForm from "../../interfaces/IStoryForm.tsx";
 
 const CreateStoryForm: React.FC = () => {
-    const [formData, setFormData] = useState<StoryForm>({
+    const [formData, setFormData] = useState<IStoryForm>({
         title: '',
         topic: '',
     });
@@ -64,8 +60,9 @@ const CreateStoryForm: React.FC = () => {
     };
 
     return (
-        <div className="card">
+        <div className="create-card">
             <div className="create-card-content">
+                <div>
                 <h3 className="form-title">New Story</h3>
                 <form onSubmit={handleSubmit} >
                     <div className="form-group">
@@ -97,8 +94,9 @@ const CreateStoryForm: React.FC = () => {
 
                     {feedback && <p className="success-feedback">{feedback}</p>}
                 </form>
+                </div>
             </div>
-        </div>
+         </div>
     );
 };
 
