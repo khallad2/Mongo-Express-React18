@@ -25,4 +25,6 @@ router.post('/:storyId/add-sentence', [
 ],addSentenceRoute(StoryController));
 
 router.post('/:storyId/end', StoryController.endStory);
+
+router.post('/:storyId/end', StoryController.endStory);
 export default router;

@@ -3,7 +3,9 @@ interface IStory extends Document {
     title: string;
     topic?: string;
     sentences: string[],
-    isComplete: boolean
+    invitedFriends: string[]; // array of emails
+    isComplete: boolean,
+    link: string;
 }
 
 export default IStory;
