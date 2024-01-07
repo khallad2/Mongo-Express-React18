@@ -1,12 +1,10 @@
 import { Request, Response } from 'express';
 import storyService from '../services/storyService';
 import { validationResult } from 'express-validator';
-
 class StoryController {
     async createStory(req: Request, res: Response) {
         try {
-            // Validate request
-            const errors = validationResult(req);
+            const errors = validationResult(req); // Validate request
             if (!errors.isEmpty()) {
                 return res.status(400).json({ success: false, errors: errors.array() });
             }
@@ -21,8 +19,8 @@ class StoryController {
 
     async getStories(req: Request, res: Response) {
         try {
-            const stories = await storyService.getStories();
-            res.json(stories);
+            const result = await storyService.getStories();
+            res.status(200).json(result);
         } catch (error) {
             console.error('Error fetching stories:', error);
             res.status(500).json({ error: 'Internal server error' });
@@ -37,7 +35,7 @@ class StoryController {
             }
             const { storyId } = req.params;
             const result = await storyService.getPreviousSentence(storyId);
-            res.status(201).json(result);
+            res.status(200).json(result);
         } catch (error: any) {
             console.error('Error getting previous sentence:', error);
             res.status(500).json({ success: false, message: error.message });

@@ -12,7 +12,12 @@ class StoryService {
     }
 
     async getStories() {
-        return await Story.find();
+        try {
+            return { success: true, data: {'stories': await Story.find()} };
+        } catch (error) {
+            console.error('Error getting story:', error);
+            throw new Error('Internal server error');
+        }
     }
 
     // todo move to sentences service

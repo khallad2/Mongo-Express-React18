@@ -4,12 +4,12 @@ import { body } from 'express-validator';
 
 const router: Router = express.Router();
 
+// Use dependency injection when setting up the route
 const createStoryRoute = (storyController: typeof StoryController) => storyController.createStory;
 const listStoriesRoute = (storyController: typeof StoryController) => storyController.getStories;
 const getPreviousSentenceRoute = (storyController: typeof StoryController) => storyController.getPreviousSentence;
 const addSentenceRoute = (storyController: typeof StoryController) => storyController.addSentence;
 
-// Use dependency injection when setting up the route
 router.post('/create', [
         body('title').notEmpty().withMessage('Title is required'),
         body('topic').optional()],

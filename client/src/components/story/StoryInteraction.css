@@ -30,7 +30,7 @@ select {
 
 label {
     font-size: 1.2rem;
-    color: #8a4ba8;
+    color: #312f30;
     margin-bottom: 10px;
     display: block;
 }
@@ -75,11 +75,6 @@ button:hover {
 }
 
 .form-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 5px;
-    max-width: 100%;
 }
 
 .interaction-card-content {
@@ -99,7 +94,7 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     z-index: 999;
     display: flex;
     flex-direction: row;
@@ -109,5 +104,43 @@ button:hover {
 
 .hint-text {
     font-size: 1rem;
-    color: #3498db;
+    color: #312f30;
+    /*transform: translate(0, -50%);*/
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    padding: 1rem;
+    margin-bottom: 14px;
+    border: 1px solid #423152;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+    width: 95%;
+    display: flex;
+    position: relative;
+}
+
+.view-button {
+    background-color: #8a4ba8;
+    color: #fcfafd;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+
+}
+.hide-button {
+    background-color: #340649;
+    color: #fcfafd;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
 }

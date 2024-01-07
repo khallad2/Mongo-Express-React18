@@ -67,7 +67,7 @@ const CreateStoryForm: React.FC = () => {
         <div className="card">
             <div className="create-card-content">
                 <h3 className="form-title">New Story</h3>
-                <form onSubmit={handleSubmit} className="story-form">
+                <form onSubmit={handleSubmit} >
                     <div className="form-group">
                         <input
                             type="text"

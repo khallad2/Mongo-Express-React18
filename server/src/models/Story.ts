@@ -1,10 +1,9 @@
 import mongoose, {Schema, Document} from 'mongoose';
-
 interface IStory extends Document {
     _id: Schema.Types.ObjectId;
     title: string;
     topic?: string;
-    sentences: string[];  // Corrected: Change to an array of strings
+    sentences: string[];
     storyKey: string;
     invitedFriends: string[]; // Store user IDs or usernames
 }
@@ -18,5 +17,4 @@ const storySchema: Schema = new Schema({
 });
 
 const Story = mongoose.model<IStory>('Story', storySchema);
-
 export default Story;
