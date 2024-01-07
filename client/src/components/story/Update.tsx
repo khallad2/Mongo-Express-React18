@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './StoryInteraction.css';
+import './Update.css';
 import IStory from '../../interfaces/IStory.tsx';
 
-const StoryInteraction: React.FC = () => {
+const Update: React.FC = () => {
     const [stories, setStories] = useState<IStory[]>([]);
     // const [selectedStory, setSelectedStory] = useState<IStory>('');
     const [selectedStory, setSelectedStory] = useState<IStory | null>(null);
@@ -159,4 +159,4 @@ const StoryInteraction: React.FC = () => {
     );
 };
 
-export default StoryInteraction;
+export default Update;

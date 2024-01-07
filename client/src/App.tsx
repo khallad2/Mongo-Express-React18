@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import CreateStoryForm from './components/story/CreateStoryForm.tsx';
+import Create from './components/story/Create.tsx';
 import './app.css';
-import StoryInteraction from "./components/story/StoryInteraction.tsx";
+import Update from "./components/story/Update.tsx";
 import { Link} from 'react-router-dom';
 
 
@@ -34,12 +34,12 @@ const App: React.FC = () => {
             </div>
 
             <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
-                {isCreateFormVisible && <CreateStoryForm />}
+                {isCreateFormVisible && <Create />}
             </div>
 
 
             <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
-                {isInteractionStoryFormVisible && <StoryInteraction />}
+                {isInteractionStoryFormVisible && <Update />}
             </div>
             {/*<Outlet></Outlet>*/}
 

@@ -1,10 +1,10 @@
-// CreateStoryForm.tsx
+// Create.tsx
 
 import React, { useState } from 'react';
-import './CreateStoryForm.css';
+import './Create.css';
 import IStoryForm from "../../interfaces/IStoryForm.tsx";
 
-const CreateStoryForm: React.FC = () => {
+const Create: React.FC = () => {
     const [formData, setFormData] = useState<IStoryForm>({
         title: '',
         topic: '',
@@ -100,4 +100,4 @@ const CreateStoryForm: React.FC = () => {
     );
 };
 
-export default CreateStoryForm;
+export default Create;

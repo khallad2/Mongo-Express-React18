@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /*background-image: url("./assets/endless-constellation.svg");*/
+    background-image: url("./assets/endless-constellation.svg");
 }
 
 .app-container {
@@ -17,4 +17,4 @@ body {
     width: 100%;
 }
 
-/* Add styles for StoryInteraction component following the same principles */
+/* Add styles for Update component following the same principles */
