@@ -15,6 +15,7 @@ const Update: React.FC<UpdateProps> = () => {
     const [isStoryCompleted, setIsStoryCompleted] = useState<boolean>(false);
     const [storyLink, setStoryLink] = useState<string>('');
     const [feedbackMessage, setFeedbackMessage] = useState<string>(''); // New state for feedback message
+    const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
 
     useEffect(() => {
         fetchAllStories();
@@ -58,6 +59,8 @@ const Update: React.FC<UpdateProps> = () => {
 
         if (!newSentence.trim()) {
             setIsValidInput(false);
+            setFeedbackMessage('Enter valid sentence');
+            setFeedbackType('error');
             return;
         }
 
@@ -83,12 +86,14 @@ const Update: React.FC<UpdateProps> = () => {
             }));
 
             setFeedbackMessage('Sentence submitted successfully'); // Feedback message for success
+            setFeedbackType('success');
 
             // Fetch new stories after entering a sentence
             fetchAllStories();
         } catch (error) {
             console.error('Error submitting sentence:', error);
             setFeedbackMessage('Failed to submit sentence'); // Feedback message for error
+            setFeedbackType('error');
         }
     };
 
@@ -156,12 +161,11 @@ const Update: React.FC<UpdateProps> = () => {
                                 placeholder={'Add Sentence'}
                                 disabled={isStoryCompleted}
                             />
-                            {!isValidInput && <p className="error-message">Enter a valid sentence</p>}
+                            {/*{!isValidInput && <p className="error-message">Enter a valid sentence</p>}*/}
                             <div>
                                 <label>Last Sentence</label>
                                 <span className="hint-text"> {previousSentence || 'No Sentences'}</span>
                             </div>
-                            {isStoryCompleted && <p className="completed-feedback">The story has been successfully completed!</p>}
                             <button className={isStoryCompleted ? 'disabled' : 'end-button'} type="submit" disabled={isStoryCompleted}>
                                 Submit Sentence
                             </button>
@@ -198,8 +202,12 @@ const Update: React.FC<UpdateProps> = () => {
                     </div>
                 )}
 
-                {/* Display feedback message */}
-                {feedbackMessage && <div className="feedback-message">{feedbackMessage}</div>}
+                {/* Display feedback message with appropriate style */}
+                {feedbackMessage && (
+                    <div className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}>
+                        {feedbackMessage}
+                    </div>
+                )}
             </div>
         </ErrorBoundary>
     );

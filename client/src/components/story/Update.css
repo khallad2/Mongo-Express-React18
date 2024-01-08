@@ -157,3 +157,22 @@ label {
 .interaction-form-input.invalid {
     border-color: #e53e3e; /* Red border for invalid input */
 }
+
+.success-feedback {
+    background-color: #b083e0; /* Green */
+    color: #fff; /* White text */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 9px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.error-feedback {
+    background-color: #eca29c; /* Red */
+    color: #fff; /* White text */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-align: center;
+}
