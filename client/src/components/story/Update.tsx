@@ -239,7 +239,7 @@ const Update: React.FC<UpdateProps> = () => {
                         <h3 id="story-title">{selectedStory.title}</h3>
                         <span><a href={selectedStory.link} target='_blank'>share</a></span>
                         <div id="hint-text" className="hint-text">
-                            <p>{selectedStory.sentences.join(',')}</p>
+                            {selectedStory.sentences.join('\n')}
                         </div>
                     </div>
                 )}
