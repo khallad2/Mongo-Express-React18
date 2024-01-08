@@ -19,12 +19,11 @@ const Update: React.FC<UpdateProps> = () => {
     const [storyLink, setStoryLink] = useState<string>('');
     const [feedbackMessage, setFeedbackMessage] = useState<string>(''); // New state for feedback message
     const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
-    const location = useLocation();
     const [providedLocation, setProvidedLocation] = useState<string>('');
+    const location = useLocation();
 
     useEffect(() => {
         fetchAllStories().then(() => handleMount());
-
     }, [providedLocation]);
 
     const handleMount = async () => {
@@ -129,11 +128,6 @@ const Update: React.FC<UpdateProps> = () => {
         setShowNarrative(!showNarrative);
     };
 
-    const getAllSentences = () => {
-        const selectedStoryObj = stories.find((story) => story._id === selectedStory?._id);
-        return selectedStoryObj?.sentences.join(' ') || '';
-    };
-
     const handleEndStory = async (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
@@ -164,35 +158,53 @@ const Update: React.FC<UpdateProps> = () => {
 
     return (
         <ErrorBoundary>
-            <div className="interaction-card">
-                <div className="interaction-card-content">
-                    <h3 className="sentence-title">Join Story</h3>
-                    <select className="select-form-input" value={selectedStory?._id} onChange={handleStorySelectionChange}>
+            <div id="interaction-card" className="interaction-card">
+                <div id="interaction-card-content" className="interaction-card-content">
+                    <h3 id="sentence-title" className="sentence-title">Join Story</h3>
+                    <select
+                        id="select-form-input"
+                        className="select-form-input"
+                        value={selectedStory?._id}
+                        onChange={handleStorySelectionChange}
+                    >
                         <option value="">Select Stories</option>
                         {stories.map((story) => (
-                            <option key={story._id} value={story._id} disabled={story._id !== selectedStory?._id && providedLocation !== ''}>
+                            <option
+                                key={story._id}
+                                value={story._id}
+                                disabled={story._id !== selectedStory?._id && providedLocation !== ''}
+                            >
                                 {story.title} {story.isComplete && '  - Completed'}
                             </option>
                         ))}
                     </select>
                     {selectedStory && (
-                        <form onSubmit={handleSentenceSubmit}>
-              <textarea
-                  value={newSentence}
-                  onChange={handleSentenceChange}
-                  className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
-                  placeholder={'Add Sentence'}
-                  disabled={isStoryCompleted}
-              />
+                        <form id="update-form" onSubmit={handleSentenceSubmit}>
+                    <textarea
+                        id="interaction-form-input"
+                        value={newSentence}
+                        onChange={handleSentenceChange}
+                        className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
+                        placeholder={'Add Sentence'}
+                        disabled={isStoryCompleted}
+                    />
                             <div>
-                                <label>Last Sentence</label>
-                                <span className="hint-text"> {previousSentence || 'No Sentences'}</span>
+                                <label id="last-sentence-label">Last Sentence</label>
+                                <span id="hint-text" className="hint-text">
+                            {previousSentence || 'No Sentences'}
+                        </span>
                             </div>
-                            <button className={isStoryCompleted ? 'disabled' : 'end-button'} type="submit" disabled={isStoryCompleted}>
+                            <button
+                                id="submit-button"
+                                className={isStoryCompleted ? 'disabled' : 'end-button'}
+                                type="submit"
+                                disabled={isStoryCompleted}
+                            >
                                 Submit Sentence
                             </button>
                             {selectedStory.sentences.length !== 0 && (
                                 <button
+                                    id="end-button"
                                     className={isStoryCompleted ? 'disabled' : 'end-button'}
                                     onClick={handleEndStory}
                                     disabled={isStoryCompleted}
@@ -201,41 +213,52 @@ const Update: React.FC<UpdateProps> = () => {
                                 </button>
                             )}
                             {isStoryCompleted && (
-                                <button className={showNarrative ? 'hide-button' : 'view-button'} onClick={handleViewNarrative}>
+                                <button
+                                    id="view-button"
+                                    className={showNarrative ? 'hide-button' : 'view-button'}
+                                    onClick={handleViewNarrative}
+                                >
                                     {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
                                 </button>
                             )}
                         </form>
                     )}
                 </div>
-                <div className="success-feedback">
+                <div id="success-feedback" className="success-feedback">
                     <label>Story link to share with friends</label>
-                    <p className="story-link">{storyLink}</p>
+                    <p id="story-link" className="story-link">
+                        {storyLink}
+                    </p>
                 </div>
 
                 {showNarrative && selectedStory && isStoryCompleted && (
-                    <div className="hint-container">
-                        <h3>{selectedStory.title}</h3>
-                        <div className="hint-text">
-                            <p>{getAllSentences()}</p>
+                    <div id="hint-container" className="hint-container">
+                        <h3 id="story-title">{selectedStory.title}</h3>
+                        <div id="hint-text" className="hint-text">
+                            <p>{selectedStory.sentences.join(',')}</p>
                         </div>
                     </div>
                 )}
 
                 {/* Display feedback message with appropriate style */}
                 {feedbackMessage && (
-                    <div className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}>
+                    <div
+                        id="feedback-message"
+                        className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
+                    >
                         {feedbackMessage}
                     </div>
                 )}
 
                 {/* Display feedback message with appropriate style */}
                 {selectedStory?.isComplete && (
-                    <div className="success-feedback">This story is completed</div>
+                    <div id="story-complete-message" className="success-feedback">
+                        This story is completed
+                    </div>
                 )}
             </div>
         </ErrorBoundary>
-    );
+);
 };
 
 export default Update;

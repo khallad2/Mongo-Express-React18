@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Create.css';
 import IStoryForm from '../../interfaces/IStoryForm';
+import ErrorBoundary from "../common/ErrorBoundry.tsx";
 
 const Create: React.FC = () => {
     // State for form data
@@ -73,46 +74,53 @@ const Create: React.FC = () => {
     };
 
     return (
-        <div className="create-card">
-            <div className="create-card-content">
-                <div>
-                    <h3 className="form-title">New Story</h3>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="title"
-                                value={formData.title}
-                                onChange={handleInputChange}
-                                className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
-                                placeholder={'Title*'}
-                            />
-                        </div>
+        <ErrorBoundary>
+            <div id="create-card" className="create-card">
+                <div id="create-card-content" className="create-card-content">
+                    <div>
+                        <h3 id="form-title" className="form-title">New Story</h3>
+                        <form id="create-form" onSubmit={handleSubmit}>
+                            <div id="title-group" className="form-group">
+                                <input
+                                    id="title-input"
+                                    type="text"
+                                    name="title"
+                                    value={formData.title}
+                                    onChange={handleInputChange}
+                                    className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
+                                    placeholder={'Title*'}
+                                />
+                            </div>
 
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                name="topic"
-                                value={formData.topic}
-                                onChange={handleInputChange}
-                                className="create-form-input"
-                                placeholder={'Topic'}
-                            />
-                        </div>
+                            <div id="topic-group" className="form-group">
+                                <input
+                                    id="topic-input"
+                                    type="text"
+                                    name="topic"
+                                    value={formData.topic}
+                                    onChange={handleInputChange}
+                                    className="create-form-input"
+                                    placeholder={'Topic'}
+                                />
+                            </div>
 
-                        <button type="submit" className="form-button">
-                            Create Story
-                        </button>
+                            <button id="submit-button" type="submit" className="form-button">
+                                Create Story
+                            </button>
 
-                        {feedback && (
-                            <p className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}>
-                                {feedback}
-                            </p>
-                        )}
-                    </form>
+                            {feedback && (
+                                <p
+                                    id="feedback-message"
+                                    className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
+                                >
+                                    {feedback}
+                                </p>
+                            )}
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ErrorBoundary>
     );
 };
 

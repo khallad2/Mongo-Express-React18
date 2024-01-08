@@ -5,7 +5,9 @@ Todo
 
 Assumptions:
 
- - user can end story when it has at least one sentence 
+ - user can end story when it has at least one sentence
+ - user can enter many sentences
+ - 
  - browser is chrome
 
 
