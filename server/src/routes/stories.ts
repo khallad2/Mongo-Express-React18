@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
-import StoryController from "../controllers/storyController";
-import { body } from 'express-validator';
+import StoryController from '../controllers/storyController';
+import { body, ValidationChain } from 'express-validator';
 
 const router: Router = express.Router();
 
@@ -8,21 +8,31 @@ const router: Router = express.Router();
 const createStoryRoute = (storyController: typeof StoryController) => storyController.createStory;
 const listStoriesRoute = (storyController: typeof StoryController) => storyController.getStories;
 const addSentenceRoute = (storyController: typeof StoryController) => storyController.addSentence;
+const endStoryController = (storyController: typeof StoryController) => storyController.endStory;
 
-const endStoryRoute = (storyController: typeof StoryController) => storyController.endStory;
-
-router.post('/create', [
-        body('title').notEmpty().withMessage('Title is required'),
-        body('topic').optional()],
+// Route to create a new story
+router.post(
+    '/create',
+    [
+            body('title').notEmpty().withMessage('Title is required'),
+            body('topic').optional(),
+    ],
     createStoryRoute(StoryController)
 );
 
+// Route to get all stories
 router.get('/all', listStoriesRoute(StoryController));
-router.post('/:storyId/add-sentence', [
-        body('newSentence').notEmpty().withMessage('Sentence is required'),
-],addSentenceRoute(StoryController));
 
-router.post('/:storyId/end', StoryController.endStory);
+// Route to add a sentence to a story
+router.post(
+    '/:storyId/add-sentence',
+    [
+            body('newSentence').notEmpty().withMessage('Sentence is required'),
+    ],
+    addSentenceRoute(StoryController)
+);
 
-router.post('/:storyId/end', StoryController.endStory);
+// Route to end a story
+router.post('/:storyId/end', endStoryController(StoryController));
+
 export default router;

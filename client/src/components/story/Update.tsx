@@ -161,6 +161,12 @@ const Update: React.FC<UpdateProps> = () => {
         <ErrorBoundary>
             <div id="interaction-card" className="interaction-card">
                 <div id="interaction-card-content" className="interaction-card-content">
+                    {/* Display feedback message with appropriate style */}
+                    {selectedStory?.isComplete && (
+                        <div id="story-complete-message" className="success-feedback">
+                            This story is completed
+                        </div>
+                    )}
                     <h3 id="sentence-title" className="sentence-title">Join Story</h3>
                     <select
                         id="select-form-input"
@@ -251,13 +257,6 @@ const Update: React.FC<UpdateProps> = () => {
                         className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
                     >
                         {feedbackMessage}
-                    </div>
-                )}
-
-                {/* Display feedback message with appropriate style */}
-                {selectedStory?.isComplete && (
-                    <div id="story-complete-message" className="success-feedback">
-                        This story is completed
                     </div>
                 )}
             </div>
