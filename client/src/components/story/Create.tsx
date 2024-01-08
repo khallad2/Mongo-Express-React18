@@ -1,18 +1,22 @@
-// Create.tsx
-
 import React, { useState } from 'react';
 import './Create.css';
-import IStoryForm from "../../interfaces/IStoryForm.tsx";
+import IStoryForm from '../../interfaces/IStoryForm';
 
 const Create: React.FC = () => {
+    // State for form data
     const [formData, setFormData] = useState<IStoryForm>({
         title: '',
         topic: '',
     });
 
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
+    // State for feedback messages
     const [feedback, setFeedback] = useState<string | null>(null);
+    const [feedbackType, setFeedbackType] = useState<'success' | 'error'>();
 
+    // State for input validation
+    const [isValidInput, setIsValidInput] = useState<boolean>(true);
+
+    // Handle input changes
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -20,22 +24,28 @@ const Create: React.FC = () => {
         });
     };
 
+    // Handle form submission
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setFeedback('');
 
         // Custom validation logic
         const newErrors: { [key: string]: string } = {};
 
         if (!formData.title.trim()) {
+            setIsValidInput(false);
             newErrors.title = 'Title is required';
+            setFeedback('Title is required');
+            setFeedbackType('error');
         }
-
-        setErrors(newErrors);
 
         // If there are no errors, proceed with the submission
         if (Object.keys(newErrors).length === 0) {
+            setIsValidInput(true);
+            setFeedback('');
+
             // Implement logic to send a POST request to the backend
-            fetch(import.meta.env.VITE_SERVER_URL + '/stories/create', {
+            fetch(`${import.meta.env.VITE_SERVER_URL}/stories/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,14 +57,17 @@ const Create: React.FC = () => {
                     console.log(result);
                     // Handle success or error messages as needed
                     if (result.success === true) {
-                        setFeedback('Story created successfully, Join Story to add sentence!');
+                        setFeedback('Story created successfully, Join Story to add a sentence!');
+                        setFeedbackType('success');
                     } else {
                         setFeedback('Error creating story. Please try again.');
+                        setFeedbackType('error');
                     }
                 })
                 .catch((error) => {
                     console.error('Error creating story:', error);
                     setFeedback('Error creating story. Please try again.');
+                    setFeedbackType('error');
                 });
         }
     };
@@ -63,40 +76,43 @@ const Create: React.FC = () => {
         <div className="create-card">
             <div className="create-card-content">
                 <div>
-                <h3 className="form-title">New Story</h3>
-                <form onSubmit={handleSubmit} >
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            name="title"
-                            value={formData.title}
-                            onChange={handleInputChange}
-                            className={`create-form-input ${errors.title ? 'invalid' : ''}`}
-                            placeholder={'Title*'}
-                        />
-                        {errors.title && <p className="error-message">{errors.title}</p>}
-                    </div>
+                    <h3 className="form-title">New Story</h3>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="title"
+                                value={formData.title}
+                                onChange={handleInputChange}
+                                className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
+                                placeholder={'Title*'}
+                            />
+                        </div>
 
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            name="topic"
-                            value={formData.topic}
-                            onChange={handleInputChange}
-                            className="create-form-input"
-                            placeholder={'Topic'}
-                        />
-                    </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="topic"
+                                value={formData.topic}
+                                onChange={handleInputChange}
+                                className="create-form-input"
+                                placeholder={'Topic'}
+                            />
+                        </div>
 
-                    <button type="submit" className="form-button">
-                        Create Story
-                    </button>
+                        <button type="submit" className="form-button">
+                            Create Story
+                        </button>
 
-                    {feedback && <p className="success-feedback">{feedback}</p>}
-                </form>
+                        {feedback && (
+                            <p className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}>
+                                {feedback}
+                            </p>
+                        )}
+                    </form>
                 </div>
             </div>
-         </div>
+        </div>
     );
 };
 

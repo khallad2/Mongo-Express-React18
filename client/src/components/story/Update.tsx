@@ -99,6 +99,11 @@ const Update: React.FC<UpdateProps> = () => {
         }
     };
 
+    const handleSentenceChange = async (e: React.ChangeEvent<HTMLTextAreaElement>)=> {
+        setNewSentence(e.target.value);
+        setIsValidInput(true);
+    }
+
     const handleViewNarrative = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         setShowNarrative(!showNarrative);
@@ -155,10 +160,7 @@ const Update: React.FC<UpdateProps> = () => {
                         <form onSubmit={handleSentenceSubmit}>
                             <textarea
                                 value={newSentence}
-                                onChange={(e) => {
-                                    setNewSentence(e.target.value);
-                                    setIsValidInput(true);
-                                }}
+                                onChange={handleSentenceChange}
                                 className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
                                 placeholder={'Add Sentence'}
                                 disabled={isStoryCompleted}

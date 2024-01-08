@@ -1,9 +1,26 @@
-.form-title {
-    font-size: 2.5rem;
-    color: #882be5; /* Light Purple */
-    /*margin-bottom: 20px;*/
+/* General styles */
+.create-card {
+    background-color: #e6dcf1;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    width: 100%;
+    transition: opacity 1s ease-in-out;
+    padding: 1rem;
 }
 
+.create-card-content {
+    position: relative;
+    width: 100%;
+}
+
+/* Title styles */
+.form-title {
+    font-size: 2.5rem;
+    color: #882be5;
+}
+
+/* Form container styles */
 .form-container.visible {
     height: auto;
     margin-top: 20px;
@@ -15,102 +32,44 @@
     overflow: hidden;
 }
 
-/* Your existing styles */
-
-.create-card {
-    background-color: #e6dcf1; /* Light Lavender */
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
-    max-width: 100%;
-    width: 100%;
-    transition: opacity 1s ease-in-out; /* Fading transition */
-    padding: 1rem;
-}
-
-.form-container.visible .card {
-    opacity: 1; /* Make visible when form is shown */
-}
-
-.create-card-content {
-    position: relative;
-    width: 100%;
-}
-
-.form-label {
-    display: inline-flex;
-    /*padding: 10px;*/
-    margin-bottom: 6px;
-    color: #8a4ba8; /* Fancy Light Purple */
-}
-
-.create-form-input {
-    padding: 1rem;
-    margin-bottom: 14px;
-    border: 1px solid #423152; /* Light Gray border */
-    border-radius: 4px;
-    transition: border-color 0.3s ease-in-out;
-    width: 90%;
-}
-
-.form-input.invalid {
-    border-color: #e53e3e; /* Red border for invalid input */
-}
-
-.error-message {
-    color: #e53e3e; /* Red color for error message */
-    margin-top: 6px;
-}
-
-/* Your existing styles */
-
-.form-title {
-    font-size: 2.5rem;
-    color: #882be5;
-}
-
+/* Card styles */
 .card {
-    background-color: #e6dcf1;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-    width: 100%;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    padding: 1rem;
 }
 
 .form-container.visible .card {
     opacity: 1;
 }
 
-.create-card-content {
-    position: relative;
-    width: 100%;
-}
-
+/* Label styles */
 .form-label {
     display: inline-flex;
     margin-bottom: 6px;
     color: #8a4ba8;
 }
 
+/* Input styles */
 .create-form-input {
+    padding: 1rem;
     margin-bottom: 14px;
     border: 1px solid #423152;
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
-    /*width: 100%;*/
+    width: 90%;
 }
 
-.form-input.invalid {
+.create-form-input.invalid {
     border-color: #e53e3e;
 }
 
+/* Error message styles */
 .error-message {
     color: #e53e3e;
     margin-top: 6px;
 }
 
+/* Button styles */
 .form-button {
     width: 100%;
     padding: 1rem;
@@ -139,8 +98,8 @@
     }
 }
 
-/* Your existing styles */
+/* Success feedback styles */
 .success-feedback {
-    color: #312f2f; /* Green color for success feedback */
+    color: #312f2f;
     margin-top: 10px;
 }
