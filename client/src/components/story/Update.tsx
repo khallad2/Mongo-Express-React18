@@ -24,17 +24,21 @@ const Update: React.FC<UpdateProps> = () => {
 
     useEffect(() => {
         fetchAllStories().then(() => handleMount());
+
     }, [providedLocation]);
 
     const handleMount = async () => {
         try {
             const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
             const storyKey = location.hash.slice(1);
-            setProvidedLocation(storyKey);
+
 
             if (storyKey) {
+                setProvidedLocation(storyKey);
                 const selected = stories.find((story) => story.link === fullUrl);
                 selectStory(selected?._id || '');
+            } else {
+                setProvidedLocation('');
             }
         } catch (error) {
             console.error('Error fetching stories:', error);
@@ -166,7 +170,7 @@ const Update: React.FC<UpdateProps> = () => {
                     <select className="select-form-input" value={selectedStory?._id} onChange={handleStorySelectionChange}>
                         <option value="">Select Stories</option>
                         {stories.map((story) => (
-                            <option key={story._id} value={story._id}>
+                            <option key={story._id} value={story._id} disabled={story._id !== selectedStory?._id && providedLocation !== ''}>
                                 {story.title} {story.isComplete && '  - Completed'}
                             </option>
                         ))}
