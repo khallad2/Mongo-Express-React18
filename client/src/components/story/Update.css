@@ -1,8 +1,6 @@
 /* src/Update.css */
 
-/* Existing styles */
-
-/* Add media query for smaller screens */
+/* Media Query for Smaller Screens */
 @media only screen and (max-width: 600px) {
     .form-container {
         flex-direction: column;
@@ -10,35 +8,19 @@
     }
 
     .interaction-form-input,
-    .select-form-input {
-        width: 90%;
-    }
-
+    .select-form-input,
     .hint-container {
-        margin: 20% 5% 1% 5%;
         width: 90%;
+        margin: 20% 5% 1% 5%;
     }
 }
 
-/* Your existing styles */
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-label {
-    font-size: 1.2rem;
-    color: #312f30;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.interaction-form-input {
+/* Input Styles */
+.interaction-form-input,
+.select-form-input {
     padding: 1rem;
     margin-bottom: 14px;
-    border: 1px solid #423152;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
     width: 80%;
@@ -47,16 +29,12 @@ label {
 }
 
 .select-form-input {
-    padding: 1rem;
-    margin-bottom: 14px;
-    border: 1px solid #423152;
-    border-radius: 4px;
-    transition: border-color 0.3s ease-in-out;
     width: 100%;
 }
 
+/* Button Styles */
 button {
-    background-color: #8a4ba8;
+    background-color: var(--primary-color);
     color: #fcfafd;
     padding: 10px 20px;
     border: none;
@@ -70,26 +48,53 @@ button:hover {
     background-color: #8e44ad;
 }
 
-.form-input.invalid {
-    border-color: #e53e3e;
+.end-button,
+.view-button,
+.hide-button {
+    background-color: var(--primary-color);
+    color: #fcfafd;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px;
 }
 
+.hide-button {
+    background-color: #340649;
+}
+
+.disabled {
+    display: none;
+}
+
+/* Label Styles */
+label {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Card Styles */
 .interaction-card {
-    background-color: #e6dcf1; /* Light Lavender */
+    background-color: var(--background-light);
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    box-shadow: var(--box-shadow);
     max-width: 100%;
     width: 100%;
-    /*opacity: 0; !* Initially hidden *!*/
-    transition: opacity 1s ease-in-out; /* Fading transition */
+    transition: opacity 1s ease-in-out;
     padding: 1rem;
 }
 
+/* Title Styles */
 .sentence-title {
     font-size: 2.5rem;
-    color: #882be5;
+    color: var(--primary-color);
 }
 
+/* Hint Container Styles */
 .hint-container {
     margin: 10% 10% 0 5%;
     width: 80%;
@@ -99,26 +104,19 @@ button:hover {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
     z-index: 999;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
 }
 
+/* Hint Text Styles */
 .hint-text {
     font-size: 1rem;
-    color: #312f30;
-    /*transform: translate(0, -50%);*/
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    color: var(--secondary-color);
     padding: 1rem;
     margin-bottom: 14px;
-    border: 1px solid #423152;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
     width: 80%;
@@ -126,32 +124,36 @@ button:hover {
     position: relative;
 }
 
-.view-button {
-    background-color: #8a4ba8;
-    color: #fcfafd;
-    padding: 10px 20px;
-    border: none;
+/* Feedback Message Styles */
+.feedback-message {
+    padding: 10px;
     border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 20px;
-
-}
-.hide-button {
-    background-color: #340649;
-    color: #fcfafd;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 20px;
+    margin-top: 10px;
 }
 
-.end-button{
-    margin: 10px 10px 10px 10px;
+.feedback-message.success {
+    background-color: var(--feedback-success);
+    color: #fff;
 }
 
-.disabled {
-    display: none;
+.feedback-message.error {
+    background-color: var(--feedback-error);
+    color: #fff;
+}
+
+/* Story Link Styles */
+.hint-container label {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+/* Completed Feedback Styles */
+.completed-feedback {
+    color: var(--feedback-success);
+    margin-top: 10px;
+}
+
+.interaction-form-input.invalid {
+    border-color: #e53e3e; /* Red border for invalid input */
 }

@@ -3,7 +3,9 @@ Todo
  - story end is implemented
  - Users model and management is implemented
 
+Assumptions:
 
+ - user can end story when it has at least one sentence 
 
 
 followed
