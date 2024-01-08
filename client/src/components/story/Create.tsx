@@ -9,6 +9,8 @@ const Create: React.FC = () => {
         title: '',
         topic: '',
     });
+    const [storyLink, setStoryLink] = useState<string>('');
+
 
     // State for feedback messages
     const [feedback, setFeedback] = useState<string | null>(null);
@@ -60,9 +62,11 @@ const Create: React.FC = () => {
                     if (result.success === true) {
                         setFeedback('Story created successfully, Join Story to add a sentence!');
                         setFeedbackType('success');
+                        setStoryLink(result.data.link)
                     } else {
                         setFeedback('Error creating story. Please try again.');
                         setFeedbackType('error');
+                        setStoryLink('')
                     }
                 })
                 .catch((error) => {
@@ -108,6 +112,12 @@ const Create: React.FC = () => {
                                 Create Story
                             </button>
 
+                            {storyLink && (
+                                <div id="success-feedback" className="success-feedback">
+                                    <label>Story link to share with friends</label>
+                                        <a href={storyLink} target='_blank' className="story-link">{storyLink}</a>
+                                </div>
+                            )}
                             {feedback && (
                                 <p
                                     id="feedback-message"

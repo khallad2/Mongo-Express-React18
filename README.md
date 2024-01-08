@@ -10,9 +10,11 @@ Assumptions:
  - 
  - browser is chrome
 
+
+
 DB Setup Terminal-1 (global setup or in specific dir)
 ========
- 
+    0.to setup MongoDb i followed https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ 
     1.run cmd brew update
     2.run cmd brew install mongodb-community@7.0
 
@@ -28,26 +30,33 @@ Backend setup Terminal-2 (dir: challenge/server)
 
 Frontend setup Terminal-3 (dir: challenge/client)
 =============
+    0. to setup react-ts vite project i followed https://vitejs.dev/guide/#scaffolding-your-first-vite-project
     1. run cmd npm install
     2. from Backend setup step 3 copy the Server url and put it into /client/.env
     3. npm run dev
 
 
+## implemented User stories
+User Story 1: As a Player, I Want to Create a New Story
+  Acceptance Criteria:
+- Users can access a main menu with the option to create a new story.
+- Creating a new story involves setting basic parameters such as story title and optional topic.
+-
+User Story 2: As a Player, I Want to Add a Sentence to the Story
+  Acceptance Criteria:
+- Once in a story, users can see the previous sentence contributed by another player.
+- There's an input field where users can type and submit their sentence.
+- The sentence submission is processed in real-time, and the updated story is displayed to all participants.
+- 
+User Story 3: As a Player, I want to Join other Stories.
+  Acceptance Criteria:
+- Users can access a main menu with the option to join an existing story.
+- Joining an existing story allows users to browse and select from available open stories or start a new one.
 
-followed
-https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
-to setup MongoDb
+User Story 4: As a Player, I Want to Invite Friends to Join My Story Acceptance Criteria:
+- Players have the option to invite friends to join their ongoing story. - Invitation methods include sharing a unique link or via a story key. - Invited friends can seamlessly join the story without disruptions.
 
-then 
-
-Mongosh command to get the connection string
-put it in .env 
-
-followed
-https://vitejs.dev/guide/#scaffolding-your-first-vite-project
-to setup react-ts vite project
-to run the project 
-
-3 terminal windows (Backend, Frontend, DB)
-
-
+User Story 5: As a Player, I Want to End the Story and Reveal the Completed Narrative
+  Acceptance Criteria:
+- Players have the option to end a story, signalling that the narrative is complete.
+- Upon ending, the entire story, including all contributed sentences, is presented in a shareable format.

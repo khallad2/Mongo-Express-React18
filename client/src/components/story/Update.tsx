@@ -23,15 +23,17 @@ const Update: React.FC<UpdateProps> = () => {
     const location = useLocation();
 
     useEffect(() => {
-        fetchAllStories().then(() => handleMount());
+        fetchAllStories()
+            .then((response => {
+                setStories(response.data.stories);
+                handleMount();
+        }));
     }, [providedLocation]);
 
     const handleMount = async () => {
         try {
             const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
             const storyKey = location.hash.slice(1);
-
-
             if (storyKey) {
                 setProvidedLocation(storyKey);
                 const selected = stories.find((story) => story.link === fullUrl);
@@ -48,8 +50,7 @@ const Update: React.FC<UpdateProps> = () => {
     const fetchAllStories = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/all`);
-            const data = await response.json();
-            setStories(data.data.stories);
+            return await response.json();
         } catch (error) {
             console.error('Error fetching stories:', error);
             setFeedbackMessage('Failed to load stories');
@@ -224,16 +225,19 @@ const Update: React.FC<UpdateProps> = () => {
                         </form>
                     )}
                 </div>
+                {selectedStory &&(
                 <div id="success-feedback" className="success-feedback">
                     <label>Story link to share with friends</label>
                     <p id="story-link" className="story-link">
-                        {storyLink}
+                        <a href={storyLink} target='_blank'>{storyLink}</a>
                     </p>
                 </div>
+                )}
 
                 {showNarrative && selectedStory && isStoryCompleted && (
                     <div id="hint-container" className="hint-container">
                         <h3 id="story-title">{selectedStory.title}</h3>
+                        <span><a href={selectedStory.link} target='_blank'>share</a></span>
                         <div id="hint-text" className="hint-text">
                             <p>{selectedStory.sentences.join(',')}</p>
                         </div>

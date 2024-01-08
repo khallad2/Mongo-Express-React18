@@ -7,7 +7,7 @@ class StoryService {
             const link = process.env.UI_URL + 'join#' + storyCode;
             const newStory = new Story({ title, topic, link });
             await newStory.save();
-            return { success: true, message: 'Story created successfully' };
+            return { success: true, message: 'Story created successfully', data: newStory };
         } catch (error) {
             console.error('Error creating story:', error);
             throw new Error('Internal server error');
@@ -22,6 +22,7 @@ class StoryService {
             throw new Error('Internal server error');
         }
     }
+    // todo remove
     async getPreviousSentence(storyId: string) {
         try {
             const story = await Story.findById(storyId );
@@ -36,6 +37,7 @@ class StoryService {
             throw new Error('Internal server error');
         }
     }
+
 
     async addSentence(storyId: string, newSentence: string) {
         try {
