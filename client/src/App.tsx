@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import Create from './components/story/Create.tsx';
 import './app.css';
 import Update from "./components/story/Update.tsx";
-import { Link} from 'react-router-dom';
-
 
 const App: React.FC = () => {
     const [isCreateFormVisible, setIsFormVisible] = useState(false);
@@ -26,7 +24,6 @@ const App: React.FC = () => {
                     <button className="toggle-form-button" onClick={toggleCreateStoryFormVisibility}>
                         {isCreateFormVisible ? 'Hide' : 'Add Story'}
                     </button>
-                    <Link to="/join" title='Create Story' className="toggle-form-button"/>
                     <button className="toggle-form-button" onClick={toggleInteractionStoryFormVisibility}>
                         {isInteractionStoryFormVisible ? 'Hide' : 'Join Story'}
                     </button>

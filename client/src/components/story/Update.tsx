@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Update.css';
 import IStory from '../../interfaces/IStory';
-import ErrorBoundary from '../common/ErrorBoundry.tsx';
+import ErrorBoundary from '../common/ErrorBoundry.tsx'; // Fix typo in import statement
 import { useLocation } from 'react-router-dom';
-
 
 interface UpdateProps {
     stories?: IStory[]; // Assuming you receive stories as a prop
@@ -21,52 +20,41 @@ const Update: React.FC<UpdateProps> = () => {
     const [feedbackMessage, setFeedbackMessage] = useState<string>(''); // New state for feedback message
     const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
     const location = useLocation();
-    const [providedLocation , setProvidedLocation] = useState<string>('');
+    const [providedLocation, setProvidedLocation] = useState<string>('');
 
-    useEffect(( ) => {
-            handleMount();
-        // Parse the URL and set selected story if link exists
+    useEffect(() => {
+        fetchAllStories().then(() => handleMount());
     }, [providedLocation]);
 
     const handleMount = async () => {
         try {
-            await fetchAllStories();
-            setProvidedLocation(location.hash.slice(1));
-
             const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
             const storyKey = location.hash.slice(1);
             setProvidedLocation(storyKey);
 
             if (storyKey) {
                 const selected = stories.find((story) => story.link === fullUrl);
-                setSelectedStory(selected || null);
-                setIsStoryCompleted(selected?.isComplete || false);
-                setStoryLink(selected?.link || '');
-                setShowNarrative(false);
-                console.log(stories) // should log the updated stories
+                selectStory(selected?._id || '');
             }
         } catch (error) {
             console.error('Error fetching stories:', error);
-            setFeedbackMessage('Failed to load stories'); // Feedback message for error
+            setFeedbackMessage('Failed to load stories');
         }
-
-    }
+    };
 
     const fetchAllStories = async () => {
-        // try {
+        try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/all`);
             const data = await response.json();
             setStories(data.data.stories);
-        // } catch (error) {
-        //     console.error('Error fetching stories:', error);
-        //     setFeedbackMessage('Failed to load stories'); // Feedback message for error
-        // }
+        } catch (error) {
+            console.error('Error fetching stories:', error);
+            setFeedbackMessage('Failed to load stories');
+        }
     };
 
-    const handleStorySelectionChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedStoryId = event.target.value;
+    const selectStory = (selectedStoryId: string) => {
         const selectedStoryObject = stories.find((story) => story._id === selectedStoryId) || null;
-
         setIsStoryCompleted(selectedStoryObject?.isComplete || false);
         setSelectedStory(selectedStoryObject);
         setStoryLink(selectedStoryObject?.link || '');
@@ -74,17 +62,16 @@ const Update: React.FC<UpdateProps> = () => {
         if (selectedStoryObject) {
             setFeedbackMessage('');
             setFeedbackType('success');
-            try {
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/${selectedStoryId}/previous-sentence`);
-                const data = await response.json();
-                setPreviousSentence(data.data.previousSentence || '');
-            } catch (error) {
-                console.error('Error fetching previous sentence:', error);
-                setFeedbackMessage('Failed to load previous sentence'); // Feedback message for error
-            }
+            const previousSentence = selectedStoryObject?.sentences[selectedStoryObject.sentences.length - 1] || '';
+            setPreviousSentence(previousSentence);
         } else {
             setPreviousSentence('');
         }
+    };
+
+    const handleStorySelectionChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedStoryId = event.target.value;
+        selectStory(selectedStoryId);
     };
 
     const handleSentenceSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -92,7 +79,7 @@ const Update: React.FC<UpdateProps> = () => {
 
         if (!newSentence.trim()) {
             setIsValidInput(false);
-            setFeedbackMessage('Enter valid sentence');
+            setFeedbackMessage('Enter a valid sentence');
             setFeedbackType('error');
             return;
         }
@@ -120,9 +107,6 @@ const Update: React.FC<UpdateProps> = () => {
 
             setFeedbackMessage('Sentence submitted successfully'); // Feedback message for success
             setFeedbackType('success');
-
-            // Fetch new stories after entering a sentence
-            fetchAllStories();
         } catch (error) {
             console.error('Error submitting sentence:', error);
             setFeedbackMessage('Failed to submit sentence'); // Feedback message for error
@@ -130,10 +114,11 @@ const Update: React.FC<UpdateProps> = () => {
         }
     };
 
-    const handleSentenceChange = async (e: React.ChangeEvent<HTMLTextAreaElement>)=> {
+    const handleSentenceChange = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        e.preventDefault();
         setNewSentence(e.target.value);
         setIsValidInput(true);
-    }
+    };
 
     const handleViewNarrative = (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -165,7 +150,6 @@ const Update: React.FC<UpdateProps> = () => {
             const data = await response.json();
             console.log('Completed Story:', data);
             setIsStoryCompleted(true);
-            fetchAllStories();
             setFeedbackMessage('Story is completed successfully'); // Feedback message for success
         } catch (error) {
             console.error('Error ending story:', error);
@@ -189,14 +173,13 @@ const Update: React.FC<UpdateProps> = () => {
                     </select>
                     {selectedStory && (
                         <form onSubmit={handleSentenceSubmit}>
-                            <textarea
-                                value={newSentence}
-                                onChange={handleSentenceChange}
-                                className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
-                                placeholder={'Add Sentence'}
-                                disabled={isStoryCompleted}
-                            />
-                            {/*{!isValidInput && <p className="error-message">Enter a valid sentence</p>}*/}
+              <textarea
+                  value={newSentence}
+                  onChange={handleSentenceChange}
+                  className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
+                  placeholder={'Add Sentence'}
+                  disabled={isStoryCompleted}
+              />
                             <div>
                                 <label>Last Sentence</label>
                                 <span className="hint-text"> {previousSentence || 'No Sentences'}</span>
@@ -221,18 +204,16 @@ const Update: React.FC<UpdateProps> = () => {
                         </form>
                     )}
                 </div>
+                <div className="success-feedback">
+                    <label>Story link to share with friends</label>
+                    <p className="story-link">{storyLink}</p>
+                </div>
 
                 {showNarrative && selectedStory && isStoryCompleted && (
-                    <div>
-                        <div className="hint-container">
-                            <label>Story link to share with friends</label>
-                            {storyLink}
-                        </div>
-                        <div className="hint-container">
-                            <h3>{selectedStory.title}</h3>
-                            <div className="hint-text">
-                                <p>{getAllSentences()}</p>
-                            </div>
+                    <div className="hint-container">
+                        <h3>{selectedStory.title}</h3>
+                        <div className="hint-text">
+                            <p>{getAllSentences()}</p>
                         </div>
                     </div>
                 )}
@@ -246,9 +227,7 @@ const Update: React.FC<UpdateProps> = () => {
 
                 {/* Display feedback message with appropriate style */}
                 {selectedStory?.isComplete && (
-                    <div className='success-feedback'>
-                        This story is completed
-                    </div>
+                    <div className="success-feedback">This story is completed</div>
                 )}
             </div>
         </ErrorBoundary>

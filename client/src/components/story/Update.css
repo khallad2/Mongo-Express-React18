@@ -174,3 +174,8 @@ label {
     border-radius: 8px;
     text-align: center;
 }
+
+.story-link{
+    font-style: italic ;
+    color: darkblue;
+}
