@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Update.css';
 import IStory from '../../interfaces/IStory';
 import ErrorBoundary from '../common/ErrorBoundry.tsx';
+import { useLocation } from 'react-router-dom';
 
-interface UpdateProps {}
+
+interface UpdateProps {
+    stories?: IStory[]; // Assuming you receive stories as a prop
+}
 
 const Update: React.FC<UpdateProps> = () => {
     const [stories, setStories] = useState<IStory[]>([]);
@@ -16,20 +20,47 @@ const Update: React.FC<UpdateProps> = () => {
     const [storyLink, setStoryLink] = useState<string>('');
     const [feedbackMessage, setFeedbackMessage] = useState<string>(''); // New state for feedback message
     const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
+    const location = useLocation();
+    const [providedLocation , setProvidedLocation] = useState<string>('');
 
-    useEffect(() => {
-        fetchAllStories();
-    }, []);
+    useEffect(( ) => {
+            handleMount();
+        // Parse the URL and set selected story if link exists
+    }, [providedLocation]);
 
-    const fetchAllStories = async () => {
+    const handleMount = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/all`);
-            const data = await response.json();
-            setStories(data.data.stories);
+            await fetchAllStories();
+            setProvidedLocation(location.hash.slice(1));
+
+            const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
+            const storyKey = location.hash.slice(1);
+            setProvidedLocation(storyKey);
+
+            if (storyKey) {
+                const selected = stories.find((story) => story.link === fullUrl);
+                setSelectedStory(selected || null);
+                setIsStoryCompleted(selected?.isComplete || false);
+                setStoryLink(selected?.link || '');
+                setShowNarrative(false);
+                console.log(stories) // should log the updated stories
+            }
         } catch (error) {
             console.error('Error fetching stories:', error);
             setFeedbackMessage('Failed to load stories'); // Feedback message for error
         }
+
+    }
+
+    const fetchAllStories = async () => {
+        // try {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/all`);
+            const data = await response.json();
+            setStories(data.data.stories);
+        // } catch (error) {
+        //     console.error('Error fetching stories:', error);
+        //     setFeedbackMessage('Failed to load stories'); // Feedback message for error
+        // }
     };
 
     const handleStorySelectionChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
