@@ -22,23 +22,6 @@ class StoryService {
             throw new Error('Internal server error');
         }
     }
-    // todo remove
-    async getPreviousSentence(storyId: string) {
-        try {
-            const story = await Story.findById(storyId );
-            if(story) {
-                const previousSentence = story?.sentences[story.sentences.length - 1] || '';
-                return {success: true, data: {'previousSentence': previousSentence, 'allSentences': story['sentences']}};
-            } else {
-                return {success: false, message: 'story not found'};
-            }
-        } catch (error){
-            console.error('Error getting previous sentence:', error);
-            throw new Error('Internal server error');
-        }
-    }
-
-
     async addSentence(storyId: string, newSentence: string) {
         try {
             const story = await Story.findOneAndUpdate(

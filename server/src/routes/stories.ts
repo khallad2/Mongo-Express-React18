@@ -7,7 +7,6 @@ const router: Router = express.Router();
 // Use dependency injection when setting up the route
 const createStoryRoute = (storyController: typeof StoryController) => storyController.createStory;
 const listStoriesRoute = (storyController: typeof StoryController) => storyController.getStories;
-const getPreviousSentenceRoute = (storyController: typeof StoryController) => storyController.getPreviousSentence;
 const addSentenceRoute = (storyController: typeof StoryController) => storyController.addSentence;
 
 const endStoryRoute = (storyController: typeof StoryController) => storyController.endStory;
@@ -19,7 +18,6 @@ router.post('/create', [
 );
 
 router.get('/all', listStoriesRoute(StoryController));
-router.get('/:storyId/previous-sentence', getPreviousSentenceRoute(StoryController));
 router.post('/:storyId/add-sentence', [
         body('newSentence').notEmpty().withMessage('Sentence is required'),
 ],addSentenceRoute(StoryController));
