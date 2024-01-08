@@ -39,8 +39,10 @@ const Update: React.FC<UpdateProps> = () => {
         setIsStoryCompleted(selectedStoryObject?.isComplete || false);
         setSelectedStory(selectedStoryObject);
         setStoryLink(selectedStoryObject?.link || '');
-
+        setShowNarrative(false);
         if (selectedStoryObject) {
+            setFeedbackMessage('');
+            setFeedbackType('success');
             try {
                 const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/${selectedStoryId}/previous-sentence`);
                 const data = await response.json();
@@ -206,6 +208,13 @@ const Update: React.FC<UpdateProps> = () => {
                 {feedbackMessage && (
                     <div className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}>
                         {feedbackMessage}
+                    </div>
+                )}
+
+                {/* Display feedback message with appropriate style */}
+                {selectedStory?.isComplete && (
+                    <div className='success-feedback'>
+                        This story is completed
                     </div>
                 )}
             </div>
