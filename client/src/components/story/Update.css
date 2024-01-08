@@ -94,9 +94,8 @@ label {
 
 /* Hint Container Styles */
 .hint-container {
-    margin: 10% 10% 0 5%;
+    margin: 3% 1% 0 5%;
     width: 80%;
-    transform: translate(0, -50%);
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
