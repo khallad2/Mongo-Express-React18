@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Create.css';
-import IStoryForm from '../../interfaces/IStoryForm';
-import ErrorBoundary from "../common/ErrorBoundry.tsx";
+import IStoryForm from '../../../interfaces/IStoryForm.tsx';
 
 const Create: React.FC = () => {
     // State for form data
@@ -78,7 +77,6 @@ const Create: React.FC = () => {
     };
 
     return (
-        <ErrorBoundary>
             <div id="create-card" className="create-card">
                 <div id="create-card-content" className="create-card-content">
                     <div>
@@ -130,7 +128,6 @@ const Create: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </ErrorBoundary>
     );
 };
 

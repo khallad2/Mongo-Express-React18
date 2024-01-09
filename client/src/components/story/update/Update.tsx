@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Update.css';
-import IStory from '../../interfaces/IStory';
-import ErrorBoundary from '../common/ErrorBoundry.tsx'; // Fix typo in import statement
+import IStory from '../../../interfaces/IStory.tsx';
 import { useLocation } from 'react-router-dom';
 
 interface UpdateProps {
@@ -158,15 +157,16 @@ const Update: React.FC<UpdateProps> = () => {
     };
 
     return (
-        <ErrorBoundary>
             <div id="interaction-card" className="interaction-card">
                 <div id="interaction-card-content" className="interaction-card-content">
+                    <h3 id="sentence-title" className="sentence-title">Join Story</h3>
                     {/* Display feedback message with appropriate style */}
                     {selectedStory?.isComplete && (
                         <div id="story-complete-message" className="success-feedback">
                             This story is completed
                         </div>
                     )}
+
                     {/* Display feedback message with appropriate style */}
                     {feedbackMessage && (
                         <div
@@ -176,7 +176,7 @@ const Update: React.FC<UpdateProps> = () => {
                             {feedbackMessage}
                         </div>
                     )}
-                    <h3 id="sentence-title" className="sentence-title">Join Story</h3>
+
                     <select
                         id="select-form-input"
                         className="select-form-input"
@@ -259,7 +259,6 @@ const Update: React.FC<UpdateProps> = () => {
                     </div>
                 )}
             </div>
-        </ErrorBoundary>
 );
 };
 

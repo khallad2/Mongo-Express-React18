@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Create from '../story/Create.tsx';
-import './home.css';
-import Update from "../story/Update.tsx";
+import './Home.css';
+import Create from '../story/create/Create.tsx';
+import Update from "../story/update/Update.tsx";
 
 const Home: React.FC = () => {
 
