@@ -1,8 +1,8 @@
-Todo
- - Authorization is implemented
- - story end is implemented
- - Users model and management is implemented
- - chrome browser
+i wanted to focus on the business and user stories that's why i didn't put time for 
+ - Authorization
+ - security
+ - Users model and management
+ - compatibility with firefox and edge and safari now is only Chrome browser
 
 Assumptions:
  - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
