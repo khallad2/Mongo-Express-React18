@@ -44,8 +44,9 @@ Frontend setup Terminal-3 (dir: challenge/client)
     2. from Backend setup step 3 copy the Server url and put it into /client/.env
     3. npm run dev
 
-Backend Testing
+Backend Testing using jest
 ============
+    npm run test
 
  0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest 
 

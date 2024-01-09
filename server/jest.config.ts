@@ -26,7 +26,7 @@ const config: Config = {
 
   // Collect coverage information from specified files
   collectCoverageFrom: [
-    '**/*.test.{js,jsx}',
+    '**/*.test.{ts,js,jsx}',
     '!**/node_modules/**',
     '!**/vendor/**',
   ],
