@@ -1,20 +1,30 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Home.css';
-import Create from '../story/create/Create.tsx';
-import Update from "../story/update/Update.tsx";
+import CreateStoryForm from '../story/create/Create.tsx';
+import InteractionStoryForm from '../story/update/Update.tsx';
 
+/**
+ * @fileoverview Home component representing the main page of the One Line Story application.
+ * @returns {JSX.Element} Rendered Home component.
+ */
 const Home: React.FC = () => {
+    const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
+    const [isInteractionStoryFormVisible, setIsInteractionStoryFormVisible] = useState(false);
 
-    const [isCreateFormVisible, setIsFormVisible] = useState(false);
-    const [isInteractionStoryFormVisible, setInteractionStoryFormVisible] = useState(false);
-    const toggleInteractionStoryFormVisibility = () => {
-        setInteractionStoryFormVisible(!isInteractionStoryFormVisible);
-        setIsFormVisible(false);
+    /**
+     * Toggles the visibility of the Create Story Form.
+     */
+    const toggleCreateStoryFormVisibility = () => {
+        setIsCreateFormVisible(!isCreateFormVisible);
+        setIsInteractionStoryFormVisible(false);
     };
 
-    const toggleCreateStoryFormVisibility = () => {
-        setIsFormVisible(!isCreateFormVisible);
-        setInteractionStoryFormVisible(false)
+    /**
+     * Toggles the visibility of the Interaction Story Form.
+     */
+    const toggleInteractionStoryFormVisibility = () => {
+        setIsInteractionStoryFormVisible(!isInteractionStoryFormVisible);
+        setIsCreateFormVisible(false);
     };
 
     return (
@@ -32,15 +42,12 @@ const Home: React.FC = () => {
             </div>
 
             <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
-                {isCreateFormVisible && <Create />}
+                {isCreateFormVisible && <CreateStoryForm />}
             </div>
-
 
             <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
-                {isInteractionStoryFormVisible && <Update />}
+                {isInteractionStoryFormVisible && <InteractionStoryForm />}
             </div>
-            {/*<Outlet></Outlet>*/}
-
         </div>
     );
 };

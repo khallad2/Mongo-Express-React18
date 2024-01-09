@@ -107,6 +107,17 @@ label {
     padding: 1rem;
 }
 
+.narrative-container {
+    opacity: 0; /* Set initial opacity to 0 */
+    transition: opacity 0.32s ease-in-out; /* Set transition property for opacity */
+
+}
+
+.narrative-container.fade-in {
+    opacity: 1; /* Set opacity to 1 when the fade-in class is applied */
+
+}
+
 /* Hint Text Styles */
 .hint-text {
     font-size: 1rem;

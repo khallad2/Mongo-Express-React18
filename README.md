@@ -9,6 +9,7 @@ Assumptions:
  - User can Invite anyone using unique story link to add sentence to non-completed story
  - User can Invite anyone using unique story link to end non-completed story
  - User can Invite anyone using unique story link to view completed Narrative
+ - When user is invited to story via link he can not choose other stories from the menu on that link
  - User can join non-completed story to add sentence at a time without any restrictions of sentence length or number of sentences
  - User can join non-completed story and see last sentence using shared link or by choosing from menu-select story
  - User can join non-completed story to end the story and reveal the Narrative and share link
