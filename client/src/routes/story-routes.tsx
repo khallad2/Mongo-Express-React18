@@ -6,10 +6,10 @@ export const appRoutes = [
     },
     {
         path: "/create",
-        component: "CreateStoryForm",
+        component: "Create",
     },
     {
         path: "/join",
-        component: "StoryInteraction",
+        component: "Update",
     }
 ]

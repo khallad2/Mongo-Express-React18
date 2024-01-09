@@ -81,6 +81,14 @@ const Create: React.FC = () => {
                 <div id="create-card-content" className="create-card-content">
                     <div>
                         <h3 id="form-title" className="form-title">New Story</h3>
+                        {feedback && (
+                            <p
+                                id="feedback-message"
+                                className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
+                            >
+                                {feedback}
+                            </p>
+                        )}
                         <form id="create-form" onSubmit={handleSubmit}>
                             <div id="title-group" className="form-group">
                                 <input
@@ -112,17 +120,9 @@ const Create: React.FC = () => {
 
                             {storyLink && (
                                 <div id="success-feedback" className="success-feedback">
-                                    <label>Story link to share with friends</label>
+                                    <label>Go and add sentence or let your friend do</label>
                                         <a href={storyLink} target='_blank' className="story-link">{storyLink}</a>
                                 </div>
-                            )}
-                            {feedback && (
-                                <p
-                                    id="feedback-message"
-                                    className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
-                                >
-                                    {feedback}
-                                </p>
                             )}
                         </form>
                     </div>

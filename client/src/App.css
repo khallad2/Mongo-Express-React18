@@ -1,4 +1,4 @@
-/* app.css */
+
 .toggle-form-button {
   background-color: #8a4ba8; /* Green */
   color: #fcfafd;
@@ -94,10 +94,6 @@
   }
 }
 
-/* Your existing styles for .card and .card-content */
-
-/* Add styles for Update component if needed */
-/* app.css */
 .form-container {
   opacity: 0; /* Start with opacity set to 0 */
   transition: opacity 1s ease-in-out; /* Transition opacity over 1 second with ease-in-out timing function */
@@ -117,5 +113,3 @@
   margin: 0.1rem;
   transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
-
-/* Your existing styles... */

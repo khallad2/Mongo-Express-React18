@@ -2,13 +2,22 @@ Todo
  - Authorization is implemented
  - story end is implemented
  - Users model and management is implemented
+ - chrome browser
 
 Assumptions:
+ - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
+ - User can Invite anyone using unique story link to add sentence to non-completed story
+ - User can Invite anyone using unique story link to end non-completed story
+ - User can Invite anyone using unique story link to view completed Narrative
+ - User can join non-completed story to add sentence at a time without any restrictions of sentence length or number of sentences
+ - User can join non-completed story and see last sentence using shared link or by choosing from menu-select story
+ - User can join non-completed story to end the story and reveal the Narrative and share link
+ - user can join and end non-completed story only when it has at least one sentence
+ - User can join completed story to view the whole Narrative or share link
+ - User can View all Stories and to
+   - read completed stories and share links
+   - contribute and share link and view last sentence of non-completed story
 
- - user can end story when it has at least one sentence
- - user can enter many sentences
- - 
- - browser is chrome
 
 
 
