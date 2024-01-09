@@ -4,7 +4,7 @@ import mongoose, { Schema, Document } from 'mongoose';
  * Interface representing the Story document.
  */
 export interface IStory extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: Schema.Types.UUID;
     title: string;
     topic?: string;
     sentences: string[];
