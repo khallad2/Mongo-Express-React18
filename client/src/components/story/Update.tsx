@@ -167,6 +167,15 @@ const Update: React.FC<UpdateProps> = () => {
                             This story is completed
                         </div>
                     )}
+                    {/* Display feedback message with appropriate style */}
+                    {feedbackMessage && (
+                        <div
+                            id="feedback-message"
+                            className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
+                        >
+                            {feedbackMessage}
+                        </div>
+                    )}
                     <h3 id="sentence-title" className="sentence-title">Join Story</h3>
                     <select
                         id="select-form-input"
@@ -247,16 +256,6 @@ const Update: React.FC<UpdateProps> = () => {
                         <div id="hint-text" className="hint-text">
                             {selectedStory.sentences.join('\n')}
                         </div>
-                    </div>
-                )}
-
-                {/* Display feedback message with appropriate style */}
-                {feedbackMessage && (
-                    <div
-                        id="feedback-message"
-                        className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
-                    >
-                        {feedbackMessage}
                     </div>
                 )}
             </div>

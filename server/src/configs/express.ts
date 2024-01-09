@@ -1,20 +1,19 @@
-// express.ts
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import storyRoutes from '../routes/story-routes';
+import {configDotenv} from "dotenv";
 
-// Import routes
-import storyRoutes from '../routes/stories';
+configDotenv();
 
 const app = express();
 // Enable CORS for all routes
 const corsOptions = {
-    origin: 'http://localhost:5173', // Update this with the actual origin of your React app
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
     optionsSuccessStatus: 204,
-    allowedHeaders: 'Content-Type, Authorization',
+    allowedHeaders: 'Content-Type', // should contain Authorization
 };
+
 // Middleware
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
