@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import storyRoutes from '../routes/story-routes';
+import storyRoutes from '../routes/StoryRoutes';
 import {configDotenv} from "dotenv";
 
 configDotenv();

@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
-import StoryController from '../controllers/storyController';
-import { body, ValidationChain } from 'express-validator';
+import { body } from 'express-validator';
+import StoryController from "../controllers/StoryController";
 
 const router: Router = express.Router();
 

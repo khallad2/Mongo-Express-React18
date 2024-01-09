@@ -44,6 +44,10 @@ Frontend setup Terminal-3 (dir: challenge/client)
     2. from Backend setup step 3 copy the Server url and put it into /client/.env
     3. npm run dev
 
+Backend Testing
+============
+
+ 0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest 
 
 ## implemented User stories
 User Story 1: As a Player, I Want to Create a New Story

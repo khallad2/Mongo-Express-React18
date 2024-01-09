@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-import storyService from '../services/storyService';
 import { validationResult } from 'express-validator';
-import StoryService from '../services/storyService';
+import StoryService from '../services/StoryService';
 
 class StoryController {
     // Creates a new story based on the provided request body
@@ -13,7 +12,7 @@ class StoryController {
             }
 
             const { title, topic } = req.body;
-            const result = await storyService.createStory(title, topic);
+            const result = await StoryService.createStory(title, topic);
 
             // Return the newly created story in the response with a 201 status code
             res.status(201).json(result);
@@ -28,7 +27,7 @@ class StoryController {
     // Retrieves all stories from the database
     async getStories(req: Request, res: Response) {
         try {
-            const result = await storyService.getStories();
+            const result = await StoryService.getStories();
 
             // Return the list of stories in the response with a 200 status code
             res.status(200).json(result);
@@ -51,7 +50,7 @@ class StoryController {
                 return res.status(400).json({ success: false, errors: errors.array() });
             }
 
-            const result = await storyService.addSentence(storyId, newSentence);
+            const result = await StoryService.addSentence(storyId, newSentence);
 
             // Return the updated story with the new sentence in the response with a 201 status code
             res.status(201).json(result);
