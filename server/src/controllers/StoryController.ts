@@ -1,14 +1,27 @@
+/**
+ * @fileoverview Controller for managing story-related operations.
+ */
+
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import StoryService from '../services/StoryService';
 
+/**
+ * Controller class for handling story-related operations.
+ */
 class StoryController {
-    // Creates a new story based on the provided request body
-    async createStory(req: Request, res: Response) {
+    /**
+     * Creates a new story based on the provided request body.
+     * @param {Request} req - Express request object.
+     * @param {Response} res - Express response object.
+     * @returns {Promise<void>} A Promise that resolves when the operation is complete.
+     */
+    async createStory(req: Request, res: Response): Promise<void> {
         try {
             const errors = validationResult(req); // Validate request
             if (!errors.isEmpty()) {
-                return res.status(400).json({ success: false, errors: errors.array() });
+                res.status(400).json({ success: false, errors: errors.array() });
+                return;
             }
 
             const { title, topic } = req.body;
@@ -24,8 +37,13 @@ class StoryController {
         }
     }
 
-    // Retrieves all stories from the database
-    async getStories(req: Request, res: Response) {
+    /**
+     * Retrieves all stories from the database.
+     * @param {Request} req - Express request object.
+     * @param {Response} res - Express response object.
+     * @returns {Promise<void>} A Promise that resolves when the operation is complete.
+     */
+    async getStories(req: Request, res: Response): Promise<void> {
         try {
             const result = await StoryService.getStories();
 
@@ -39,15 +57,21 @@ class StoryController {
         }
     }
 
-    // Adds a new sentence to a story based on the provided request parameters and body
-    async addSentence(req: Request, res: Response) {
+    /**
+     * Adds a new sentence to a story based on the provided request parameters and body.
+     * @param {Request} req - Express request object.
+     * @param {Response} res - Express response object.
+     * @returns {Promise<void>} A Promise that resolves when the operation is complete.
+     */
+    async addSentence(req: Request, res: Response): Promise<void> {
         const { storyId } = req.params;
         const { newSentence } = req.body;
 
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(400).json({ success: false, errors: errors.array() });
+                res.status(400).json({ success: false, errors: errors.array() });
+                return;
             }
 
             const result = await StoryService.addSentence(storyId, newSentence);
@@ -62,8 +86,13 @@ class StoryController {
         }
     }
 
-    // Marks a story as complete based on the provided request parameters
-    async endStory(req: Request, res: Response) {
+    /**
+     * Marks a story as complete based on the provided request parameters.
+     * @param {Request} req - Express request object.
+     * @param {Response} res - Express response object.
+     * @returns {Promise<void>} A Promise that resolves when the operation is complete.
+     */
+    async endStory(req: Request, res: Response): Promise<void> {
         try {
             const { storyId } = req.params;
 

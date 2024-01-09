@@ -1,5 +1,5 @@
 import mongoose, {Schema, Document} from 'mongoose';
-interface IStory extends Document {
+export interface IStory extends Document {
     _id: Schema.Types.ObjectId;
     title: string;
     topic?: string;
