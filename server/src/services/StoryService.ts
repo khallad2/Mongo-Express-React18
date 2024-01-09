@@ -1,10 +1,8 @@
+/**
+ * @fileoverview Service class for managing story-related operations.
+ */
 import Story,{IStory} from '../models/Story';
 import * as crypto from 'crypto';
-import story from "../models/Story";
-
-/**
- * Service class for managing story-related operations.
- */
 class StoryService {
     /**
      * Creates a new story with a unique link and saves it to the database.
