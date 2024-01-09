@@ -1,5 +1,4 @@
 import React from 'react';
-import Create from './components/story/Create.tsx';
 import './app.css';
 import Update from "./components/story/Update.tsx";
 import { Route, Routes} from 'react-router-dom';
@@ -9,7 +8,7 @@ const App: React.FC = () => {
     return (
         <Routes>
             <Route path='/' element={<Home />}></Route>
-            <Route path='/create' element={<Create />}></Route>
+            {/*<Route path='/create' element={<Create />}></Route>*/}
             <Route path='/join' element={<Update />} ></Route>
         </Routes>
     );
