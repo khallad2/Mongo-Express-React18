@@ -1,5 +1,13 @@
 /* app.css */
 
+/* Common styles */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 /**
  * Button styles for toggle-form.
  */
@@ -12,15 +20,16 @@
     width: 30%;
     margin: 0.1rem;
     text-align: center;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /**
  * Row container styles.
  */
 .row {
-    display: flex;
     width: 100%;
-    justify-content: space-between;
+    max-width: 1200px; /* Set a maximum width for larger screens */
+    margin: 0 auto; /* Center the content */
 }
 
 /**
@@ -28,17 +37,17 @@
  */
 .form-container-wrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    transition: opacity 0.5s ease-in-out;
+    max-width: 800px; /* Set a maximum width for larger screens */
+    margin: 0 auto; /* Center the content */
 }
 
 /**
  * Input field styles for forms.
  */
 .form-input {
-    width: 90%;
+    width: 100%;
     margin-bottom: 20px;
+    padding: 10px;
     border: 1px solid #882be5;
     border-radius: 4px;
     transition: opacity 1s ease-in-out;
@@ -51,17 +60,8 @@
     font-family: 'Brush Script MT', cursive;
     font-size: 100px;
     margin-bottom: 20px;
-    flex-direction: row;
-    align-items: center;
     color: #f4f4f5;
     border-color: #8a4ba8;
-}
-
-/**
- * Button styles for toggle-form with opacity transition.
- */
-.toggle-form-button {
-    transition: opacity 0.5s ease-in-out;
 }
 
 /**
@@ -96,7 +96,8 @@
     font-size: 1rem;
     color: #e6dcf1;
     margin-top: 10px;
-    max-width: 600px;
+    margin-bottom: 10px;
+    /*max-width: 80%;*/
     text-align: center;
     line-height: 1.5;
     font-style: italic;
@@ -132,5 +133,12 @@
      */
     .form-input {
         width: 100%;
+    }
+
+    /**
+     * Reduce padding for smaller screens.
+     */
+    .form-input {
+        padding: 8px;
     }
 }

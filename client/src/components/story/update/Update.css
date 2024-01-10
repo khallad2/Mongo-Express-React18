@@ -94,6 +94,15 @@ label {
     max-width: 100%;
     transition: opacity 1s ease-in-out;
     padding: 1rem;
+    justify-items: center;
+}
+
+.update-card-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 /**
@@ -231,15 +240,17 @@ label {
 /**
  * Form Description Styles
  */
-.form-description {
+.update-form-description {
     font-size: 1rem;
     color: #312f30;
-    max-width: 600px;
+    /*max-width: 600px;*/
     text-align: center;
     line-height: 1.5;
     font-style: italic;
     opacity: 0.8;
     justify-content: center;
     margin: 1rem;
+    justify-self: center;
+    align-self: center;
 }
 

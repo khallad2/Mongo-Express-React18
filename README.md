@@ -1,11 +1,46 @@
-i wanted to focus on the business and user stories that's why i didn't put time for 
- - Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
- - Authorization
- - security
+Thanks for giving me the chance to have this challenge. 
+Here you find an Overview, Installation steps and prerequisites to run the project
+
+Overview:
+
+## implemented User stories from the provided challenge description
+User Story 1: 
+As a Player, I Want to Create a New Story
+Acceptance Criteria:
+- Users can access a main menu with the option to create a new story.
+- Creating a new story involves setting basic parameters such as story title and optional topic.
+-
+User Story 2: 
+As a Player, I Want to Add a Sentence to the Story
+Acceptance Criteria:
+- Once in a story, users can see the previous sentence contributed by another player.
+- There's an input field where users can type and submit their sentence.
+- The sentence submission is processed in real-time, and the updated story is displayed to all participants.
+-
+User Story 3: 
+As a Player, I want to Join other Stories.
+Acceptance Criteria:
+- Users can access a main menu with the option to join an existing story.
+- Joining an existing story allows users to browse and select from available open stories or start a new one.
+
+User Story 4: 
+As a Player, I Want to Invite Friends to Join My Story Acceptance Criteria:
+- Players have the option to invite friends to join their ongoing story. - Invitation methods include sharing a unique link or via a story key. - Invited friends can seamlessly join the story without disruptions.
+
+User Story 5: 
+As a Player, I Want to End the Story and Reveal the Completed Narrative
+Acceptance Criteria:
+- Players have the option to end a story, signalling that the narrative is complete.
+- Upon ending, the entire story, including all contributed sentences, is presented in a shareable format.
+
+### What is missing   
+ - Frontend-testing please note: Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
+ - Authorization, login, logout
+ - security (middleware)
  - Users model and management
  - compatibility with firefox and edge and safari now is only Chrome browser
 
-Assumptions:
+### Assumptions: During Development i had to have some assumptions 
  - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
  - User Can Share or Invite by click on Share -> copy link then share it with others
  - User can Invite anyone using unique story link to add sentence to non-completed story
@@ -22,24 +57,23 @@ Assumptions:
    - contribute and share link and view last sentence of non-completed story
 
 
-
-
+## Installation
 
 DB Setup Terminal-1 (global setup or in specific dir)
 ========
-    0.to setup MongoDb i followed https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ 
+    0.to setup MongoDb i followed the guide on https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ 
     1.run cmd brew update
     2.run cmd brew install mongodb-community@7.0
-
     3. run cmd brew services start mongodb-community@7.0 // start DB service
     4. run cmd mongosh // to get the data base connection string ex: mongodb://127.0.0.1:27017
     5. use one-line-story // switch to one-line-story DB
 
 Backend setup Terminal-2 (dir: challenge/server)
 =============
-    1. run cmd npm install
+    0. run cmd: cd challenge/server
+    1. run cmd: npm install
     2. from DB Setup step#4 copy the DB Connection string ex: MONGODB_URI=mongodb://127.0.0.1:27017/ into  /server/.env
-    3. npm start
+    3. run cmd: npm start
 
 Frontend setup Terminal-3 (dir: challenge/client)
 =============
@@ -50,31 +84,5 @@ Frontend setup Terminal-3 (dir: challenge/client)
 
 Backend Testing using jest
 ============
-    npm run test
-
- 0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest 
-
-## implemented User stories
-User Story 1: As a Player, I Want to Create a New Story
-  Acceptance Criteria:
-- Users can access a main menu with the option to create a new story.
-- Creating a new story involves setting basic parameters such as story title and optional topic.
--
-User Story 2: As a Player, I Want to Add a Sentence to the Story
-  Acceptance Criteria:
-- Once in a story, users can see the previous sentence contributed by another player.
-- There's an input field where users can type and submit their sentence.
-- The sentence submission is processed in real-time, and the updated story is displayed to all participants.
-- 
-User Story 3: As a Player, I want to Join other Stories.
-  Acceptance Criteria:
-- Users can access a main menu with the option to join an existing story.
-- Joining an existing story allows users to browse and select from available open stories or start a new one.
-
-User Story 4: As a Player, I Want to Invite Friends to Join My Story Acceptance Criteria:
-- Players have the option to invite friends to join their ongoing story. - Invitation methods include sharing a unique link or via a story key. - Invited friends can seamlessly join the story without disruptions.
-
-User Story 5: As a Player, I Want to End the Story and Reveal the Completed Narrative
-  Acceptance Criteria:
-- Players have the option to end a story, signalling that the narrative is complete.
-- Upon ending, the entire story, including all contributed sentences, is presented in a shareable format.
+    0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest
+    1. run cmd: npm run test // i have provided exmples of test files but couldn't establish doing tests because of time

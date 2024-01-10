@@ -197,28 +197,28 @@ const Update: React.FC<UpdateProps> = () => {
         }
     };
     return (
-        <div id="interaction-card" className="update-card">
+        <div id="update-card" className="update-card">
             {isInvitation && (
                 <div>
                     <Link to='/'>  {'<- Home'} </Link>
                 </div>
             )}
-            <div id="interaction-card-content">
+            <div id="update-card-content" className='update-card-content'>
                 <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
-                <div className="form-description">
+                <div className="update-form-description ">
                     {!isInvitation && (
-                        <div>Join open story to contribute by adding new sentence,
+                        <div >Join open story to contribute by adding new sentence,
                             or a completed story to reveal narrative and share with others
                         </div>
                     )}
 
                     {isInvitation && isStoryCompleted &&(
-                        <div>You are invited to view only this completed story,
+                        <div >You are invited to view only this completed story,
                             Now you can reveal whole narrative and Share with others!.
                         </div>
                     )}
                     {isInvitation && !isStoryCompleted &&(
-                        <div>You are invited to Join this open story,
+                        <div >You are invited to Join this open story,
                             Add sentence and share with others!.
                         </div>
                     )}

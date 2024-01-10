@@ -97,6 +97,7 @@
 .form-container {
   opacity: 0; /* Start with opacity set to 0 */
   transition: opacity 1s ease-in-out; /* Transition opacity over 1 second with ease-in-out timing function */
+  justify-content: center;
 }
 
 .form-container.visible {
