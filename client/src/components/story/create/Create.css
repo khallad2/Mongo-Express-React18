@@ -107,6 +107,7 @@
 /* Success feedback styles */
 .success-feedback {
     color: #fcfafd;
+    background-color: #190231;
     margin-top: 10px;
 }
 
@@ -151,6 +152,7 @@
     cursor: pointer;
     font-size: 16px;
     margin: 20px;
+    width: auto;
 }
 
 /* Feedback Message Styles */
@@ -158,8 +160,10 @@
     /*padding: 10px;*/
     /*border-radius: 8px;*/
     /*margin-top: 10px;*/
-    width: inherit;
+    width: auto;
     /*margin-left: 1rem;*/
+    position: relative;
+    justify-content: center;
 }
 
 .create-feedback-message.success {
@@ -176,4 +180,12 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-direction: row;
+}
+
+.create-col {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
 }

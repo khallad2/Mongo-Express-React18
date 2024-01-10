@@ -18,7 +18,16 @@
 /**
  * Input Styles
  */
-.interaction-form-input,
+.interaction-form-input {
+    padding: 1rem;
+    margin-bottom: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+    width: 90%;
+    display: flex;
+}
+
 .select-form-input {
     padding: 1rem;
     margin-bottom: 14px;
@@ -57,6 +66,7 @@ button,
     cursor: pointer;
     font-size: 16px;
     margin: 20px;
+    width: 30%;
 }
 
 button:hover,
@@ -166,6 +176,7 @@ label {
     align-items: center;
     display: flex;
     text-align: center;
+    width: 100%;
 }
 
 .feedback-message.success {
@@ -200,7 +211,7 @@ label {
 }
 
 .success-feedback {
-    background-color: #b083e0;
+    background-color: #190231;
     color: #fff;
     padding: 10px;
     margin: 10px 0;

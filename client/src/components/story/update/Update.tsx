@@ -207,18 +207,18 @@ const Update: React.FC<UpdateProps> = () => {
                 <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
                 <div className="update-form-description ">
                     {!isInvitation && (
-                        <div >Join open story to contribute by adding new sentence,
-                            or a completed story to reveal narrative and share with others
+                        <div >Join an open story to contribute by adding a new sentence.
+                            Or reveal the narrative of a completed story and share with others.
                         </div>
                     )}
 
                     {isInvitation && isStoryCompleted &&(
-                        <div >You are invited to view only this completed story,
+                        <div >You are invited to only view this completed story.
                             Now you can reveal whole narrative and Share with others!.
                         </div>
                     )}
                     {isInvitation && !isStoryCompleted &&(
-                        <div >You are invited to Join this open story,
+                        <div >You are invited to Join only this open story.
                             Add sentence and share with others!.
                         </div>
                     )}
@@ -230,22 +230,13 @@ const Update: React.FC<UpdateProps> = () => {
                     </div>
                 )}
 
-                {/* Display feedback message with appropriate style */}
-                {feedbackMessage && (
-                    <div
-                        id="feedback-message"
-                        className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
-                    >
-                        {feedbackMessage}
-                    </div>
-                )}
                 <select
                     id="select-form-input"
                     className="select-form-input"
                     value={selectedStory?._id}
                     onChange={handleStorySelectionChange}
                 >
-                    <option value="">Select Stories</option>
+                    <option value="">Select open Story</option>
                     {stories.map((story) => (
                         <option
                             key={story._id}
@@ -269,9 +260,19 @@ const Update: React.FC<UpdateProps> = () => {
                             disabled={isStoryCompleted}
                         />
                             <label id="last-sentence-label">Last Sentence</label>
-                            <input disabled={true} className={'interaction-form-input'} id="hint-text" value={previousSentence || 'No Sentences yet ... '}>
-                            </input>
-                        <div className='form-actions update-row '>
+                            <input disabled={true} className={'interaction-form-input'} id="hint-text" value={previousSentence || 'No Sentences yet ... '}></input>
+
+                        {/* Display feedback message with appropriate style */}
+                        {feedbackMessage && (
+                            <div
+                                id="feedback-message"
+                                className={`feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
+                            >
+                                {feedbackMessage}
+                            </div>
+                        )}
+
+                        <div className='update-row '>
                             <button
                                 id="submit-button"
                                 className={isStoryCompleted ? 'disabled' : 'end-button'}
@@ -302,6 +303,7 @@ const Update: React.FC<UpdateProps> = () => {
                     </div>
                 </div>
             )}
+
             <div className='update-row'>
                 {isStoryCompleted && (
                     <button
@@ -314,12 +316,9 @@ const Update: React.FC<UpdateProps> = () => {
                 )}
                 {selectedStory && (
                     <div>
-                        <button id="story-link" className='view-button'>
-                            <a href={storyLink} className="story-link" target='_blank' rel='noopener noreferrer'>Share</a>
-                        </button>
-                        {isStoryCompleted && (
-                            <InfoCircle description={'Click share and copy the link to share it with others!.\n'} />
-                        )}
+                        <div>
+                            <InfoCircle title={'share'} description={storyLink}/>
+                        </div>
                     </div>
                 )}
             </div>

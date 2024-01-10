@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, {useState, ChangeEvent, FormEvent} from 'react';
 import './Create.css';
 import IStoryForm from '../../../interfaces/IStoryForm.tsx';
 import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
@@ -9,6 +9,7 @@ import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
  * @returns {JSX.Element} Rendered Create component.
  */
 const Create: React.FC = () => {
+
     // State for form data
     const [formData, setFormData] = useState<IStoryForm>({
         title: '',
@@ -50,6 +51,7 @@ const Create: React.FC = () => {
             newErrors.title = 'Title is required';
             setFeedback('Title is required');
             setFeedbackType('error');
+            setStoryLink('');
         }
 
         // If there are no errors, proceed with the submission
@@ -70,7 +72,7 @@ const Create: React.FC = () => {
                     console.log(result);
                     // Handle success or error messages as needed
                     if (result.success === true) {
-                        setFeedback('Story created successfully, Now add a sentence or share with others!');
+                        setFeedback('Story created successfully! Add a sentence or share with others!');
                         setFeedbackType('success');
                         setStoryLink(result.data.link);
                         setFormData({title: '', topic: ''})
@@ -95,7 +97,7 @@ const Create: React.FC = () => {
                     <h3 id="form-title" className="form-title">Create New Story</h3>
                     <p className="form-description">
                         Create and join stories!
-                        Enter Story Title and Topic then Share or add-sentence.
+                        Enter Story Title and Topic then Share or add your sentence.
                     </p>
                     <form id="create-form" onSubmit={handleSubmit}>
                         <div id="title-group" className="form-group">
@@ -127,20 +129,24 @@ const Create: React.FC = () => {
                                 className={`create-feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
                             >
                                 {feedback}
+                                {storyLink &&(
+                                    <div className=''>
+                                        {/*<span>Copy link to share</span>*/}
+                                        <InfoCircle title={'Share'} description={storyLink}/>
+                                    </div>
+                                )}
                             </div>
                         )}
 
-                        <div className='create-row'>
+                        <div className='create-col'>
                         {storyLink !== '' && (
-                            <div >
-                                <InfoCircle description={'Click "Add a sentence or share" button to contribute to the created story. \n' +
-                                    'Alternatively, you can navigate to Join Story then select a story, and add your sentence there! \n' +
-                                    `link: ${storyLink}`}/>
+                            <div className='create-row'>
                                 <button className="share-sentence-button">
                                     <a href={storyLink} target='_blank' rel='noopener noreferrer' >Add Sentence or Share with others
                                     </a>
                                 </button>
                             </div>
+
                         )}
 
                         <button id="submit-button" type="submit" className="submit-button">
