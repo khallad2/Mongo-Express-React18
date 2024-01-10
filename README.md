@@ -1,4 +1,5 @@
 i wanted to focus on the business and user stories that's why i didn't put time for 
+ - Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
  - Authorization
  - security
  - Users model and management
@@ -6,6 +7,7 @@ i wanted to focus on the business and user stories that's why i didn't put time 
 
 Assumptions:
  - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
+ - User Can Share or Invite by click on Share -> copy link then share it with others
  - User can Invite anyone using unique story link to add sentence to non-completed story
  - User can Invite anyone using unique story link to end non-completed story
  - User can Invite anyone using unique story link to view completed Narrative
@@ -18,6 +20,7 @@ Assumptions:
  - User can View all Stories and to
    - read completed stories and share links
    - contribute and share link and view last sentence of non-completed story
+
 
 
 

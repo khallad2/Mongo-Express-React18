@@ -29,11 +29,15 @@ const Home: React.FC = () => {
 
     return (
         <div className="app-container">
-            <h1 className="app-title">One Line Story</h1>
+            <h1 className="app-title">One Line Story 📖</h1>
+            <p className="app-description">
+                Welcome to One Line Story, where you can create and join stories with just one line!
+                Explore your creativity and contribute to exciting narratives.
+            </p>
             <div className="row">
                 <div className="form-container-wrapper">
                     <button className="toggle-form-button" onClick={toggleCreateStoryFormVisibility}>
-                        {isCreateFormVisible ? 'X' : 'Add Story'}
+                        {isCreateFormVisible ? 'X' : 'Create Story'}
                     </button>
                     <button className="toggle-form-button" onClick={toggleInteractionStoryFormVisibility}>
                         {isInteractionStoryFormVisible ? 'X' : 'Join Story'}

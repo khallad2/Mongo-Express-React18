@@ -1,0 +1,40 @@
+.info-circle-container {
+    position: relative;
+    display: inline-block;
+}
+
+.info-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #fcfafd;
+    color: #882be5;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /*margin-left: 0.5rem;*/
+}
+
+.info-hint-container {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120%);
+    background-color: #fcfafd;
+    color: #882be5;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    white-space: unset;
+    display: none; /* Hidden by default */
+    width: 20rem;
+}
+
+.info-circle:focus + .info-hint-container,
+.info-hint-container:not(:focus-within) {
+    display: block;
+}

@@ -7,7 +7,7 @@
 
     .interaction-form-input,
     .select-form-input,
-    .hint-container {
+    .update-hint-container {
         width: 90%;
         margin: 20% 5% 1% 5%;
     }
@@ -85,15 +85,22 @@ label {
     transition: opacity 1s ease-in-out;
     padding: 1rem;
 }
+/* Card-contentd Styles */
+.interaction-card-content {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+}
 
 /* Title Styles */
 .sentence-title {
     font-size: 2.5rem;
     color: var(--primary-color);
+    text-align: center;
 }
 
 /* Hint Container Styles */
-.hint-container {
+.update-hint-container {
     margin: 3% 1% 0 5%;
     width: 80%;
     background-color: rgba(255, 255, 255, 0.9);
@@ -137,6 +144,10 @@ label {
     padding: 10px;
     border-radius: 8px;
     margin-top: 10px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .feedback-message.success {
@@ -150,7 +161,7 @@ label {
 }
 
 /* Story Link Styles */
-.hint-container label {
+.update-hint-container label {
     font-size: 1rem;
     color: var(--secondary-color);
     margin-bottom: 10px;
@@ -187,5 +198,25 @@ label {
 
 .story-link{
     font-style: italic ;
-    color: darkblue;
+    color: #fcfafd;
+    text-decoration: unset;
+}
+
+.update-row{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-description {
+    font-size: 1rem;
+    color: #312f30; /* Dark gray text color */
+    /*margin-top: 10px;*/
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+    font-style: italic;
+    opacity: 0.8;
+    justify-content: center;
+    margin: 1rem;
 }

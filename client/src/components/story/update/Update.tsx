@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import './Update.css';
 import IStory from '../../../interfaces/IStory.tsx';
 import { useLocation } from 'react-router-dom';
+import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
 
 interface UpdateProps {
     stories?: IStory[]; // Assuming you receive stories as a prop
@@ -25,11 +26,15 @@ const Update: React.FC<UpdateProps> = () => {
     const location = useLocation();
 
     useEffect(() => {
+        const controller = new AbortController();
         fetchAllStories()
             .then((response) => {
                 setStories(response.data.stories);
                 handleMount();
             });
+        return () => {
+            controller.abort();
+        }
     }, [providedLocation]);
 
     /**
@@ -192,7 +197,25 @@ const Update: React.FC<UpdateProps> = () => {
     return (
         <div id="interaction-card" className="interaction-card">
             <div id="interaction-card-content" className="interaction-card-content">
-                <h3 id="sentence-title" className="sentence-title">Join Story</h3>
+                <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
+                <div className="form-description">
+                    {!providedLocation && (
+                        <div>Join open story to contribute by adding new sentence,
+                            or a completed story to reveal narrative and share with others
+                        </div>
+                    )}
+
+                    {providedLocation && isStoryCompleted &&(
+                        <div>You are invited to view this completed story,
+                            Now you can reveal whole narrative and Share with others!.
+                        </div>
+                    )}
+                    {providedLocation && !isStoryCompleted &&(
+                        <div>You are invited to Join this story,
+                            Add sentence and share with others!.
+                        </div>
+                    )}
+                </div>
                 {/* Display feedback message with appropriate style */}
                 {selectedStory?.isComplete && (
                     <div id="story-complete-message" className="success-feedback">
@@ -227,7 +250,9 @@ const Update: React.FC<UpdateProps> = () => {
                         </option>
                     ))}
                 </select>
-                {selectedStory && (
+
+                {/* Display Form when selecting an open story with appropriate style */}
+                {selectedStory && !isStoryCompleted &&(
                     <form id="update-form" onSubmit={handleSentenceSubmit}>
                         <textarea
                             id="interaction-form-input"
@@ -240,7 +265,7 @@ const Update: React.FC<UpdateProps> = () => {
                         <div>
                             <label id="last-sentence-label">Last Sentence</label>
                             <span id="hint-text" className="hint-text">
-                                {previousSentence || 'No Sentences'}
+                                {previousSentence || 'No Sentences yet ... '}
                             </span>
                         </div>
                         <button
@@ -261,35 +286,39 @@ const Update: React.FC<UpdateProps> = () => {
                                 End Story
                             </button>
                         )}
-                        {isStoryCompleted && (
-                            <button
-                                id="view-button"
-                                className={showNarrative ? 'hide-button' : 'view-button'}
-                                onClick={handleViewNarrative}
-                            >
-                                {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
-                            </button>
-                        )}
-                        {showNarrative && selectedStory && isStoryCompleted && (
-                            <div id="narrative-container" className={`hint-container ${showNarrative ? 'fade-in' : ''}`}>
-                                <h3 id="story-title">{selectedStory.title}</h3>
-                                <span><a href={selectedStory.link} target='_blank' rel='noopener noreferrer'>share</a></span>
-                                <div id="hint-text" className="hint-text">
-                                    {selectedStory.sentences.join('\n')}
-                                </div>
-                            </div>
-                        )}
                     </form>
                 )}
             </div>
-            {selectedStory && (
-                <div id="success-feedback" className="success-feedback">
-                    <label>Story link to share with friends</label>
-                    <p id="story-link" className="story-link">
-                        <a href={storyLink} target='_blank' rel='noopener noreferrer'>{storyLink}</a>
-                    </p>
+            {showNarrative && selectedStory && isStoryCompleted && (
+                <div id="narrative-container" className={`update-hint-container ${showNarrative ? 'fade-in' : ''}`}>
+                    <h3 id="story-title">{selectedStory.title}</h3>
+                    <div id="hint-text" className="hint-text">
+                        {selectedStory.sentences.join('\n')}
+                    </div>
                 </div>
             )}
+            <div className='update-row'>
+            {isStoryCompleted && (
+                <button
+                    id="view-button"
+                    className={showNarrative ? 'hide-button' : 'view-button'}
+                    onClick={handleViewNarrative}
+                >
+                    {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
+                </button>
+            )}
+            {selectedStory && (
+                <div >
+                    <button id="story-link" className='view-button'>
+                        <a href={storyLink} className="story-link" target='_blank' rel='noopener noreferrer'>Share</a>
+                    </button>
+                    {isStoryCompleted && (
+                        <InfoCircle description={'Click share and copy the link to share it with others!. \n'}/>
+                    )}
+                </div>
+
+            )}
+            </div>
         </div>
     );
 };

@@ -71,15 +71,21 @@
 
 /* Button styles */
 .form-button {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
+    width: 60%;
+    /*padding: 1rem;*/
+    /*font-size: 1rem;*/
     color: white;
     background-color: #8a4ba8;
     border: none;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
     cursor: pointer;
     align-items: center;
+}
+
+.form-button > a {
+    color: #e6dcf1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
 }
 
 /* Media Query for smaller screens */
@@ -102,4 +108,61 @@
 .success-feedback {
     color: #fcfafd;
     margin-top: 10px;
+}
+
+.form-description {
+    font-size: 1rem;
+    color: #312f30; /* Dark gray text color */
+    /*margin-top: 10px;*/
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+    font-style: italic;
+    opacity: 0.8;
+    margin: 2rem;
+}
+
+.form-description:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.share-sentence-button {
+    background-color: var(--primary-color);
+    color: #fcfafd;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px;
+}
+.share-sentence-button > a {
+    text-decoration: none;
+    color: #e6dcf1;
+}
+
+/* Feedback Message Styles */
+.create-feedback-message {
+    /*padding: 10px;*/
+    /*border-radius: 8px;*/
+    /*margin-top: 10px;*/
+    width: inherit;
+    /*margin-left: 1rem;*/
+}
+
+.create-feedback-message.success {
+    background-color: var(--feedback-success);
+    color: #fff;
+}
+
+.create-feedback-message.error {
+    background-color: var(--feedback-error);
+    color: #fff;
+}
+
+.create-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }

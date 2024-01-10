@@ -1,7 +1,7 @@
 // Mock the entire express-validator module
 jest.mock('express-validator');
 
-describe('StoryController', () => {
+describe('StoryService', () => {
     // let mockRequest: any;
     // let mockResponse: Partial<Response>;
 
@@ -17,6 +17,7 @@ describe('StoryController', () => {
         it('should create a new story successfully', async () => {
             expect('test').toBe('test');
         });
+
     });
 
     // Similar test blocks for other controller functions (getStories, addSentence, endStory)...

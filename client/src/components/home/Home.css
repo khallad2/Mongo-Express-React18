@@ -118,4 +118,18 @@
     transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
 
-/* Your existing styles... */
+.app-description {
+    font-size: 1rem;
+    color: #e6dcf1; /* Dark gray text color */
+    margin-top: 10px;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.app-description:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}

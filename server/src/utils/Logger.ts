@@ -15,6 +15,9 @@ if (!fs.existsSync(logsDir)) {
  * Custom logger for logging to console and files.
  */
 class Logger {
+    constructor() {
+    }
+
     /**
      * Log an error message.
      * @param {string} message - The error message.
