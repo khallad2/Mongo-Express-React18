@@ -77,8 +77,6 @@ const Update: React.FC<UpdateProps> = () => {
      */
     const selectStory =  (selectedStoryId: string, stories: IStory[]) => {
         const selectedStoryObject =  stories.find((story) => story._id === selectedStoryId) || null;
-        console.log('selectedStoryObject', selectedStoryObject);
-        console.log('stories', stories);
         setIsStoryCompleted(selectedStoryObject?.isComplete || false);
         setSelectedStory(selectedStoryObject);
         setStoryLink(selectedStoryObject?.link || '');
