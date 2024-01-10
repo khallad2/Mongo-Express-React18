@@ -1,16 +1,16 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import './Update.css';
+import { Link } from 'react-router-dom';
+import InfoCircle from '../../common/InfoCircle/InfoCircle.tsx';
 import IStory from '../../../interfaces/IStory.tsx';
 import { useLocation } from 'react-router-dom';
-import {Link} from 'react-router-dom';
-import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
+import './Update.css';
 
-interface UpdateProps {
-    stories?: IStory[]; // Assuming you receive stories as a prop
-}
+interface UpdateProps {}
 
 /**
- * Update component for joining and updating a story.
+ * @fileoverview Update component for joining and updating a story.
+ * @component
+ * @returns {JSX.Element} Rendered Update component.
  */
 const Update: React.FC<UpdateProps> = () => {
     const [stories, setStories] = useState<IStory[]>([]);
@@ -196,13 +196,13 @@ const Update: React.FC<UpdateProps> = () => {
     };
 
     return (
-        <div id="interaction-card" className="interaction-card">
+        <div id="interaction-card" className="update-card">
             {providedLocation && (
                 <div>
-                    <Link to='/'>  {'<-- Home'} </Link>
+                    <Link to='/'>  {'<- Home'} </Link>
                 </div>
             )}
-            <div id="interaction-card-content" className="interaction-card-content">
+            <div id="interaction-card-content">
                 <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
                 <div className="form-description">
                     {!providedLocation && (
@@ -212,12 +212,12 @@ const Update: React.FC<UpdateProps> = () => {
                     )}
 
                     {providedLocation && isStoryCompleted &&(
-                        <div>You are invited to view this completed story,
+                        <div>You are invited to view only this completed story,
                             Now you can reveal whole narrative and Share with others!.
                         </div>
                     )}
                     {providedLocation && !isStoryCompleted &&(
-                        <div>You are invited to Join this story,
+                        <div>You are invited to Join this open story,
                             Add sentence and share with others!.
                         </div>
                     )}

@@ -1,4 +1,6 @@
-/* Media Query for Smaller Screens */
+/**
+ * Media Query for Smaller Screens
+ */
 @media only screen and (max-width: 600px) {
     .form-container {
         flex-direction: column;
@@ -13,7 +15,9 @@
     }
 }
 
-/* Input Styles */
+/**
+ * Input Styles
+ */
 .interaction-form-input,
 .select-form-input {
     padding: 1rem;
@@ -38,22 +42,10 @@
     width: 100%;
 }
 
-/* Button Styles */
-button {
-    background-color: var(--primary-color);
-    color: #fcfafd;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-button:hover {
-    background-color: #8e44ad;
-}
-
+/**
+ * Button Styles
+ */
+button,
 .end-button,
 .view-button,
 .hide-button {
@@ -67,15 +59,24 @@ button:hover {
     margin: 20px;
 }
 
+button:hover,
+.end-button:hover,
+.view-button:hover,
+.hide-button:hover {
+    background-color: #8e44ad;
+}
+
 .hide-button {
-    background-color: #340649;
+    color: white;
 }
 
 .disabled {
     display: none;
 }
 
-/* Label Styles */
+/**
+ * Label Styles
+ */
 label {
     font-size: 1.2rem;
     color: var(--secondary-color);
@@ -83,8 +84,10 @@ label {
     display: block;
 }
 
-/* Card Styles */
-.interaction-card {
+/**
+ * Card Styles
+ */
+.update-card {
     background-color: var(--background-light);
     border-radius: 8px;
     box-shadow: var(--box-shadow);
@@ -92,25 +95,19 @@ label {
     transition: opacity 1s ease-in-out;
     padding: 1rem;
 }
-/* Card-contentd Styles */
-.interaction-card-content {
-    /*position: relative;*/
-    /*width: 100%;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
 
-/* Title Styles */
+/**
+ * Title Styles
+ */
 .sentence-title {
     font-size: 2.5rem;
     color: var(--primary-color);
     text-align: center;
 }
 
-/* Hint Container Styles */
+/**
+ * Hint Container Styles
+ */
 .update-hint-container {
     margin: 3% 1% 0 5%;
     width: 80%;
@@ -126,17 +123,17 @@ label {
 }
 
 .narrative-container {
-    opacity: 0; /* Set initial opacity to 0 */
-    transition: opacity 0.32s ease-in-out; /* Set transition property for opacity */
-
+    opacity: 0;
+    transition: opacity 0.32s ease-in-out;
 }
 
 .narrative-container.fade-in {
-    opacity: 1; /* Set opacity to 1 when the fade-in class is applied */
-
+    opacity: 1;
 }
 
-/* Hint Text Styles */
+/**
+ * Hint Text Styles
+ */
 .hint-text {
     font-size: 1rem;
     color: var(--secondary-color);
@@ -150,15 +147,16 @@ label {
     position: relative;
 }
 
-/* Feedback Message Styles */
+/**
+ * Feedback Message Styles
+ */
 .feedback-message {
-    padding: 10px;
     border-radius: 8px;
     margin-top: 10px;
-    width: 90%;
     justify-content: center;
     align-items: center;
     display: flex;
+    text-align: center;
 }
 
 .feedback-message.success {
@@ -171,60 +169,71 @@ label {
     color: #fff;
 }
 
-/* Story Link Styles */
+/**
+ * Story Link Styles
+ */
 .update-hint-container label {
     font-size: 1rem;
     color: var(--secondary-color);
     margin-bottom: 10px;
 }
 
-/* Completed Feedback Styles */
+/**
+ * Completed Feedback Styles
+ */
 .completed-feedback {
     color: var(--feedback-success);
     margin-top: 10px;
 }
 
 .interaction-form-input.invalid {
-    border-color: #e53e3e; /* Red border for invalid input */
+    border-color: #e53e3e;
 }
 
 .success-feedback {
-    background-color: #b083e0; /* Green */
-    color: #fff; /* White text */
+    background-color: #b083e0;
+    color: #fff;
     padding: 10px;
     margin: 10px 0;
     border-radius: 9px;
     text-align: center;
     opacity: 0.8;
-    justify-content: center;
 }
 
 .error-feedback {
-    background-color: #eca29c; /* Red */
-    color: #fff; /* White text */
+    background-color: #eca29c;
+    color: #fff;
     padding: 10px;
     margin: 10px 0;
     border-radius: 8px;
     text-align: center;
 }
 
-.story-link{
-    font-style: italic ;
+/**
+ * Story Link Styles
+ */
+.story-link {
+    font-style: italic;
     color: #fcfafd;
     text-decoration: unset;
 }
 
-.update-row{
+/**
+ * Update Row Styles
+ */
+.update-row {
     display: flex;
     width: 100%;
     justify-content: center;
     flex-direction: row;
 }
 
+/**
+ * Form Description Styles
+ */
 .form-description {
     font-size: 1rem;
-    color: #312f30; /* Dark gray text color */
-    /*margin-top: 10px;*/
+    color: #312f30;
     max-width: 600px;
     text-align: center;
     line-height: 1.5;
@@ -233,3 +242,4 @@ label {
     justify-content: center;
     margin: 1rem;
 }
+

@@ -1,4 +1,5 @@
 :root {
+    /* Color variables */
     --primary-color: #8a4ba8;
     --secondary-color: #312f30;
     --background-light: #e6dcf1;
@@ -7,19 +8,26 @@
     --feedback-success: #020202;
     --feedback-error: #e53e3e;
 }
+
 body {
+    /* Body styles */
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'sans-serif', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #312f2f;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-image: url("./assets/endless-constellation.svg");
+    position: relative;
+    flex-direction: row;
 }
 
 .app-container {
+    /* Container styles */
     text-align: center;
     max-width: 1200px; /* Adjust based on your design */
     width: 100%;
 }
+
+/* You can add more styles or adjust existing ones based on your project needs */

@@ -5,6 +5,8 @@ import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
 
 /**
  * @fileoverview Create component for creating a new story.
+ * @component
+ * @returns {JSX.Element} Rendered Create component.
  */
 const Create: React.FC = () => {
     // State for form data
@@ -131,7 +133,7 @@ const Create: React.FC = () => {
                         <div className='create-row'>
                         {storyLink !== '' && (
                             <div >
-                                <InfoCircle description={'Click to add a sentence or share the link to contribute to the created story. \n' +
+                                <InfoCircle description={'Click "Add a sentence or share" button to contribute to the created story. \n' +
                                     'Alternatively, you can navigate to Join Story then select a story, and add your sentence there! \n' +
                                     `link: ${storyLink}`}/>
                                 <button className="share-sentence-button">
@@ -141,7 +143,7 @@ const Create: React.FC = () => {
                             </div>
                         )}
 
-                        <button id="submit-button" type="submit" className="view-button">
+                        <button id="submit-button" type="submit" className="submit-button">
                             {formData.title !== '' ? 'Submit' : 'Create New Story'}
                         </button>
                         </div>

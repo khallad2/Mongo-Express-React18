@@ -1,33 +1,35 @@
 import React, { useState } from 'react';
 import './Home.css';
-import CreateStoryForm from '../story/create/Create.tsx';
-import InteractionStoryForm from '../story/update/Update.tsx';
-
+import Update from "../story/update/Update.tsx";
+import Create from "../story/create/Create.tsx";
+import * as icon from '../../assets/expand-icon.svg';
 /**
  * @fileoverview Home component representing the main page of the One Line Story application.
+ * @Component
  * @returns {JSX.Element} Rendered Home component.
  */
 const Home: React.FC = () => {
-    const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
-    const [isInteractionStoryFormVisible, setIsInteractionStoryFormVisible] = useState(false);
+    const [isCreateComponentVisible, setIsCreateComponentVisible] = useState(false);
+    const [isUpdateComponentVisible, setIsUpdateComponentVisible] = useState(false);
 
     /**
      * Toggles the visibility of the Create Story Form.
      */
     const toggleCreateStoryFormVisibility = () => {
-        setIsCreateFormVisible(!isCreateFormVisible);
-        setIsInteractionStoryFormVisible(false);
+        setIsCreateComponentVisible(!isCreateComponentVisible);
+        setIsUpdateComponentVisible(false);
     };
 
     /**
      * Toggles the visibility of the Interaction Story Form.
      */
     const toggleInteractionStoryFormVisibility = () => {
-        setIsInteractionStoryFormVisible(!isInteractionStoryFormVisible);
-        setIsCreateFormVisible(false);
+        setIsUpdateComponentVisible(!isUpdateComponentVisible);
+        setIsCreateComponentVisible(false);
     };
 
     return (
+        <div>
         <div className="app-container">
             <h1 className="app-title">One Line Story 📖</h1>
             <p className="app-description">
@@ -37,21 +39,22 @@ const Home: React.FC = () => {
             <div className="row">
                 <div className="form-container-wrapper">
                     <button className="toggle-form-button" onClick={toggleCreateStoryFormVisibility}>
-                        {isCreateFormVisible ? 'X' : 'Create Story'}
+                        {isCreateComponentVisible ? <img alt="Icon" src={icon.default} className="icon-svg"></img> : 'Create Story'}
                     </button>
                     <button className="toggle-form-button" onClick={toggleInteractionStoryFormVisibility}>
-                        {isInteractionStoryFormVisible ? 'X' : 'Join Story'}
+                        {isUpdateComponentVisible ? <img alt="Icon" src={icon.default} className="icon-svg"></img>  : 'Join Story'}
                     </button>
                 </div>
             </div>
 
-            <div className={`form-container ${isCreateFormVisible ? 'visible' : 'hidden'}`}>
-                {isCreateFormVisible && <CreateStoryForm />}
+            <div className={`form-container ${isCreateComponentVisible ? 'visible' : 'hidden'}`}>
+                {isCreateComponentVisible && <Create />}
             </div>
 
-            <div className={`form-container ${isInteractionStoryFormVisible ? 'visible' : 'hidden'}`}>
-                {isInteractionStoryFormVisible && <InteractionStoryForm />}
+            <div className={`form-container ${isUpdateComponentVisible ? 'visible' : 'hidden'}`}>
+                {isUpdateComponentVisible && <Update />}
             </div>
+        </div>
         </div>
     );
 };
