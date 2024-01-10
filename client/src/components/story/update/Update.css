@@ -21,9 +21,17 @@
     border: 1px solid var(--border-color);
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
-    width: 80%;
+    width: inherit;
     display: flex;
-    position: relative;
+}
+
+.update-form {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .select-form-input {
@@ -81,15 +89,18 @@ label {
     border-radius: 8px;
     box-shadow: var(--box-shadow);
     max-width: 100%;
-    width: 100%;
     transition: opacity 1s ease-in-out;
     padding: 1rem;
 }
 /* Card-contentd Styles */
 .interaction-card-content {
-    position: relative;
-    width: 100%;
+    /*position: relative;*/
+    /*width: 100%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 /* Title Styles */
@@ -207,6 +218,7 @@ label {
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-direction: row;
 }
 
 .form-description {

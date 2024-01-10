@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import './Update.css';
 import IStory from '../../../interfaces/IStory.tsx';
 import { useLocation } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
 
 interface UpdateProps {
@@ -186,7 +187,7 @@ const Update: React.FC<UpdateProps> = () => {
             const data = await response.json();
             console.log('Completed Story:', data);
             setIsStoryCompleted(true);
-            setFeedbackMessage('Story is completed successfully'); // Feedback message for success
+            setFeedbackMessage('Story is completed successfully, Now you can Reveal Narrative'); // Feedback message for success
         } catch (error) {
             console.error('Error ending story:', error);
             setIsStoryCompleted(false);
@@ -196,6 +197,11 @@ const Update: React.FC<UpdateProps> = () => {
 
     return (
         <div id="interaction-card" className="interaction-card">
+            {providedLocation && (
+                <div>
+                    <Link to='/'>  {'<-- Home'} </Link>
+                </div>
+            )}
             <div id="interaction-card-content" className="interaction-card-content">
                 <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
                 <div className="form-description">
@@ -219,7 +225,7 @@ const Update: React.FC<UpdateProps> = () => {
                 {/* Display feedback message with appropriate style */}
                 {selectedStory?.isComplete && (
                     <div id="story-complete-message" className="success-feedback">
-                        This story is completed
+                        This story is completed, Reveal Narrative now!
                     </div>
                 )}
 
@@ -232,7 +238,6 @@ const Update: React.FC<UpdateProps> = () => {
                         {feedbackMessage}
                     </div>
                 )}
-
                 <select
                     id="select-form-input"
                     className="select-form-input"
@@ -253,71 +258,70 @@ const Update: React.FC<UpdateProps> = () => {
 
                 {/* Display Form when selecting an open story with appropriate style */}
                 {selectedStory && !isStoryCompleted &&(
-                    <form id="update-form" onSubmit={handleSentenceSubmit}>
+                    <form id="update-form" onSubmit={handleSentenceSubmit} className='update-form'>
                         <textarea
                             id="interaction-form-input"
                             value={newSentence}
                             onChange={handleSentenceChange}
-                            className={`interaction-form-input ${isValidInput ? '' : 'invalid'}`}
+                            className={`interaction-form-input ${isValidInput ? 'interaction-form-input' : 'interaction-form-input invalid'}`}
                             placeholder={'Add Sentence'}
                             disabled={isStoryCompleted}
                         />
-                        <div>
                             <label id="last-sentence-label">Last Sentence</label>
-                            <span id="hint-text" className="hint-text">
-                                {previousSentence || 'No Sentences yet ... '}
-                            </span>
-                        </div>
-                        <button
-                            id="submit-button"
-                            className={isStoryCompleted ? 'disabled' : 'end-button'}
-                            type="submit"
-                            disabled={isStoryCompleted}
-                        >
-                            Submit Sentence
-                        </button>
-                        {selectedStory.sentences.length !== 0 && (
+                            <input disabled={true} className={'interaction-form-input'} id="hint-text" value={previousSentence || 'No Sentences yet ... '}>
+                            </input>
+                        <div className='form-actions update-row '>
                             <button
-                                id="end-button"
+                                id="submit-button"
                                 className={isStoryCompleted ? 'disabled' : 'end-button'}
-                                onClick={handleEndStory}
+                                type="submit"
                                 disabled={isStoryCompleted}
                             >
-                                End Story
+                                Submit Sentence
                             </button>
-                        )}
+                            {selectedStory.sentences.length !== 0 && (
+                                <button
+                                    id="end-button"
+                                    className={isStoryCompleted ? 'disabled' : 'end-button'}
+                                    onClick={handleEndStory}
+                                    disabled={isStoryCompleted}
+                                >
+                                    End Story
+                                </button>
+                            )}
+                        </div>
                     </form>
                 )}
             </div>
-            {showNarrative && selectedStory && isStoryCompleted && (
-                <div id="narrative-container" className={`update-hint-container ${showNarrative ? 'fade-in' : ''}`}>
-                    <h3 id="story-title">{selectedStory.title}</h3>
-                    <div id="hint-text" className="hint-text">
-                        {selectedStory.sentences.join('\n')}
-                    </div>
-                </div>
-            )}
-            <div className='update-row'>
-            {isStoryCompleted && (
-                <button
-                    id="view-button"
-                    className={showNarrative ? 'hide-button' : 'view-button'}
-                    onClick={handleViewNarrative}
-                >
-                    {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
-                </button>
-            )}
-            {selectedStory && (
-                <div >
-                    <button id="story-link" className='view-button'>
-                        <a href={storyLink} className="story-link" target='_blank' rel='noopener noreferrer'>Share</a>
-                    </button>
-                    {isStoryCompleted && (
-                        <InfoCircle description={'Click share and copy the link to share it with others!. \n'}/>
-                    )}
-                </div>
 
-            )}
+            <div className='update-row'>
+                {showNarrative && selectedStory && isStoryCompleted && (
+                    <div id="narrative-container" className={`update-hint-container ${showNarrative ? 'fade-in' : ''}`}>
+                        <h3 id="story-title">{selectedStory.title}</h3>
+                        <div id="hint-text" className="hint-text">
+                            {selectedStory.sentences.join('\n')}
+                        </div>
+                    </div>
+                )}
+                {isStoryCompleted && (
+                    <button
+                        id="view-button"
+                        className={showNarrative ? 'hide-button' : 'view-button'}
+                        onClick={handleViewNarrative}
+                    >
+                        {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
+                    </button>
+                )}
+                {selectedStory && (
+                    <div>
+                        <button id="story-link" className='view-button'>
+                            <a href={storyLink} className="story-link" target='_blank' rel='noopener noreferrer'>Share</a>
+                        </button>
+                        {isStoryCompleted && (
+                            <InfoCircle description={'Click share and copy the link to share it with others!.\n'} />
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
