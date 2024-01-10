@@ -293,16 +293,15 @@ const Update: React.FC<UpdateProps> = () => {
                     </form>
                 )}
             </div>
-
-            <div className='update-row'>
-                {showNarrative && selectedStory && isStoryCompleted && (
-                    <div id="narrative-container" className={`update-hint-container ${showNarrative ? 'fade-in' : ''}`}>
-                        <h3 id="story-title">{selectedStory.title}</h3>
-                        <div id="hint-text" className="hint-text">
-                            {selectedStory.sentences.join('\n')}
-                        </div>
+            {showNarrative && selectedStory && isStoryCompleted && (
+                <div id="narrative-container" className={`update-hint-container ${showNarrative ? 'fade-in' : ''}`}>
+                    <h3 id="story-title">{selectedStory.title}</h3>
+                    <div id="hint-text" className="hint-text">
+                        {selectedStory.sentences.join('\n')}
                     </div>
-                )}
+                </div>
+            )}
+            <div className='update-row'>
                 {isStoryCompleted && (
                     <button
                         id="view-button"
