@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "main": "src/index.js",
   "dependencies": {
     "@types/cors": "^2.8.17",
