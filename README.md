@@ -2,6 +2,7 @@ Thanks for giving me the chance to have this challenge.
 Here you find an Overview, Installation steps and prerequisites to run the project
 
 Overview:
+   Stack: React18-ts + Vite, Express + typescript, Mongo-db
 
 ## implemented User stories from the provided challenge description
 User Story 1: 
@@ -9,14 +10,14 @@ As a Player, I Want to Create a New Story
 Acceptance Criteria:
 - Users can access a main menu with the option to create a new story.
 - Creating a new story involves setting basic parameters such as story title and optional topic.
--
+
 User Story 2: 
 As a Player, I Want to Add a Sentence to the Story
 Acceptance Criteria:
 - Once in a story, users can see the previous sentence contributed by another player.
 - There's an input field where users can type and submit their sentence.
 - The sentence submission is processed in real-time, and the updated story is displayed to all participants.
--
+
 User Story 3: 
 As a Player, I want to Join other Stories.
 Acceptance Criteria:
@@ -32,13 +33,6 @@ As a Player, I Want to End the Story and Reveal the Completed Narrative
 Acceptance Criteria:
 - Players have the option to end a story, signalling that the narrative is complete.
 - Upon ending, the entire story, including all contributed sentences, is presented in a shareable format.
-
-### What is missing   
- - Frontend-testing please note: Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
- - Authorization, login, logout
- - security (middleware)
- - Users model and management
- - compatibility with firefox and edge and safari now is only Chrome browser
 
 ### Assumptions: During Development i had to have some assumptions 
  - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
@@ -59,6 +53,17 @@ Acceptance Criteria:
 
 ## Installation
 
+- Extra: if you have a mac and you use brew you can run cmd 
+   chmod +x install-dep.sh
+   ./install-mongo.sh
+  this will setup mongoDb or follow step 0 in DB Setup
+
+- if you have a mac in the challenge dir you can run
+   chmod +x install-dep.sh
+  ./install-dep.sh
+this will install all challenge dependencies for the frontend and backend and run frontend and backend in 2 terminals
+Alternatively you can follow the following setup steps 
+
 DB Setup Terminal-1 (global setup or in specific dir)
 ========
     0.to setup MongoDb i followed the guide on https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/ 
@@ -68,8 +73,9 @@ DB Setup Terminal-1 (global setup or in specific dir)
     4. run cmd mongosh // to get the data base connection string ex: mongodb://127.0.0.1:27017
     5. use one-line-story // switch to one-line-story DB
 
+
 Backend setup Terminal-2 (dir: challenge/server)
-=============
+============= 
     0. run cmd: cd challenge/server
     1. run cmd: npm install
     2. from DB Setup step#4 copy the DB Connection string ex: MONGODB_URI=mongodb://127.0.0.1:27017/ into  /server/.env
@@ -86,3 +92,16 @@ Backend Testing using jest
 ============
     0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest
     1. run cmd: npm run test // i have provided exmples of test files but couldn't establish doing tests because of time
+
+
+### My planned ToDo List
+- Frontend-testing please note: Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
+- Authorization, login, logout, delete story
+- security (middleware)
+- Users model and management
+- compatibility with firefox and edge and safari now is only Chrome browser
+
+
+Thanks for your time
+Khallad Sharafeldin
+khallad_3@hotmail.com
