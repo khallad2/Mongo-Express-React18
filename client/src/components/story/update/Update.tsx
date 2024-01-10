@@ -23,36 +23,34 @@ const Update: React.FC<UpdateProps> = () => {
     const [storyLink, setStoryLink] = useState<string>('');
     const [feedbackMessage, setFeedbackMessage] = useState<string>(''); // New state for feedback message
     const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
-    const [providedLocation, setProvidedLocation] = useState<string>('');
+    const [isInvitation, setIsInvitation] = useState<boolean>(false);
     const location = useLocation();
-
     useEffect(() => {
-        const controller = new AbortController();
+        console.log('useEffect');
         fetchAllStories()
             .then((response) => {
                 setStories(response.data.stories);
-                handleMount();
+                const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
+                const storyKey = location.hash.slice(1);
+                console.log(response.data.stories)
+                // if storyKey and fullUrl handle url mount
+                storyKey !== '' && fullUrl.includes(storyKey) ? handleMount(response.data.stories, fullUrl) : setIsInvitation(false);
             });
-        return () => {
-            controller.abort();
-        }
-    }, [providedLocation]);
+        return () => {}
+    }, [ ]);
 
     /**
-     * Handle mounting of the component.
+     * Handle mounting of the component in case of provided story link.
      */
-    const handleMount = async () => {
+    const handleMount =  (stories: IStory[], fullUrl: string) => {
+        console.log('here');
         try {
-            const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
-            const storyKey = location.hash.slice(1);
-            if (storyKey) {
-                setProvidedLocation(storyKey);
-                const selected = stories.find((story) => story.link === fullUrl);
-                selectStory(selected?._id || '');
-            } else {
-                setProvidedLocation('');
-            }
+            const selected = stories.find((story) => story.link === fullUrl);
+            console.log(selected);
+            selectStory(selected?._id || '', stories);
+            setIsInvitation(true);
         } catch (error) {
+            setIsInvitation(false);
             console.error('Error fetching stories:', error);
             setFeedbackMessage('Failed to load stories');
         }
@@ -71,12 +69,16 @@ const Update: React.FC<UpdateProps> = () => {
         }
     };
 
+
+
     /**
      * Select a story based on its ID.
      * @param {string} selectedStoryId - The ID of the selected story.
      */
-    const selectStory = (selectedStoryId: string) => {
-        const selectedStoryObject = stories.find((story) => story._id === selectedStoryId) || null;
+    const selectStory =  (selectedStoryId: string, stories: IStory[]) => {
+        const selectedStoryObject =  stories.find((story) => story._id === selectedStoryId) || null;
+        console.log('selectedStoryObject', selectedStoryObject);
+        console.log('stories', stories);
         setIsStoryCompleted(selectedStoryObject?.isComplete || false);
         setSelectedStory(selectedStoryObject);
         setStoryLink(selectedStoryObject?.link || '');
@@ -97,7 +99,9 @@ const Update: React.FC<UpdateProps> = () => {
      */
     const handleStorySelectionChange = async (event: ChangeEvent<HTMLSelectElement>) => {
         const selectedStoryId = event.target.value;
-        selectStory(selectedStoryId);
+        const res = await fetchAllStories();
+        setStories(res.data.stories);
+        selectStory(selectedStoryId, stories);
     };
 
     /**
@@ -132,7 +136,7 @@ const Update: React.FC<UpdateProps> = () => {
 
             setSelectedStory((prevStory) => ({
                 ...(prevStory as IStory),
-                sentences: [...prevStory?.sentences || [], res.data.previousSentence],
+                sentences: [...res.data.allSentences],
             }));
 
             setFeedbackMessage('Sentence submitted successfully'); // Feedback message for success
@@ -194,10 +198,9 @@ const Update: React.FC<UpdateProps> = () => {
             setFeedbackMessage('Failed to end story'); // Feedback message for error
         }
     };
-
     return (
         <div id="interaction-card" className="update-card">
-            {providedLocation && (
+            {isInvitation && (
                 <div>
                     <Link to='/'>  {'<- Home'} </Link>
                 </div>
@@ -205,18 +208,18 @@ const Update: React.FC<UpdateProps> = () => {
             <div id="interaction-card-content">
                 <h3 id="sentence-title" className="sentence-title">Join Existing Story</h3>
                 <div className="form-description">
-                    {!providedLocation && (
+                    {!isInvitation && (
                         <div>Join open story to contribute by adding new sentence,
                             or a completed story to reveal narrative and share with others
                         </div>
                     )}
 
-                    {providedLocation && isStoryCompleted &&(
+                    {isInvitation && isStoryCompleted &&(
                         <div>You are invited to view only this completed story,
                             Now you can reveal whole narrative and Share with others!.
                         </div>
                     )}
-                    {providedLocation && !isStoryCompleted &&(
+                    {isInvitation && !isStoryCompleted &&(
                         <div>You are invited to Join this open story,
                             Add sentence and share with others!.
                         </div>
@@ -249,7 +252,7 @@ const Update: React.FC<UpdateProps> = () => {
                         <option
                             key={story._id}
                             value={story._id}
-                            disabled={story._id !== selectedStory?._id && providedLocation !== ''}
+                            disabled={story._id !== selectedStory?._id && isInvitation}
                         >
                             {story.title} {story.isComplete && '  - Completed'}
                         </option>
