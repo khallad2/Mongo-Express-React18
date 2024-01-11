@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent, FormEvent} from 'react';
+import React, {useState, ChangeEvent, FormEvent, MouseEventHandler} from 'react';
 import './Create.css';
 import IStoryForm from '../../../interfaces/IStoryForm.tsx';
 import InfoCircle from "../../common/InfoCircle/InfoCircle.tsx";
@@ -29,11 +29,26 @@ const Create: React.FC = () => {
      * @param {ChangeEvent<HTMLInputElement>} e - The change event.
      */
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
+
+    /**
+     * Handle Share Button Click.
+     * @param {MouseEventHandler<HTMLButtonElement>} e - The click event.
+     */
+    const handleShareButtonClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+
+        // Get the Link value
+        const link = e.currentTarget.value;
+
+        // if link value is present open new tab with the link
+        link ? window.open(link, '_blank', 'noopener noreferrer') : setFeedback('No Story Link! try copy link from share button');
+    }
 
     /**
      * Handle form submission.
@@ -142,14 +157,12 @@ const Create: React.FC = () => {
                                         <InfoCircle  title={'Share'} description={storyLink}/>
                                     </div>
                                 )}
-                                <button className="share-sentence-button">
-                                    <a href={storyLink} target='_blank' rel='noopener noreferrer' >Add Sentence or Share with others
-                                    </a>
+                                <button className="share-sentence-button" value={storyLink} onClick={handleShareButtonClick}>
+                                    Add Sentence or Share with others
                                 </button>
                             </div>
 
                         )}
-
                         <button id="submit-button" type="submit" className="submit-button">
                             {formData.title !== '' ? 'Submit' : 'Create New Story'}
                         </button>

@@ -14,7 +14,7 @@
  * @class
  */
 .toggle-form-button {
-    background-color: #8a4ba8;
+    background-color: var(--primary-color);
     color: #fcfafd;
     border: none;
     border-radius: 8px;
@@ -53,7 +53,7 @@
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #882be5;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     transition: opacity 1s ease-in-out;
 }
@@ -67,7 +67,7 @@
     font-size: 100px;
     margin-bottom: 5px;
     color: #f4f4f5;
-    border-color: #8a4ba8;
+    border-color: var(--primary-color);
 }
 
 /**
@@ -77,7 +77,7 @@
 .toggle-form-button > .icon-svg {
     width: 20px;
     height: 20px;
-    fill: #882be5 !important;
+    fill: var(--primary-color) !important;
     text-align: center;
 }
 
@@ -104,7 +104,7 @@
  */
 .app-description {
     font-size: 1rem;
-    color: #e6dcf1;
+    color: var(--background-light);
     margin-bottom: 20px;
     text-align: center;
     line-height: 1.5;

@@ -1,3 +1,7 @@
+/**
+ * Root variables for color scheme.
+ * @root
+ */
 :root {
     /* Color variables */
     --primary-color: #8a4ba8;
@@ -9,8 +13,11 @@
     --feedback-error: #e53e3e;
 }
 
+/**
+ * Body styles.
+ * @body
+ */
 body {
-    /* Body styles */
     margin: 0;
     font-family: 'sans-serif', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #312f2f;
@@ -23,11 +30,12 @@ body {
     flex-direction: row;
 }
 
+/**
+ * App container styles.
+ * @class
+ */
 .app-container {
-    /* Container styles */
     text-align: center;
     max-width: 1200px; /* Adjust based on your design */
     width: 100%;
 }
-
-/* You can add more styles or adjust existing ones based on your project needs */

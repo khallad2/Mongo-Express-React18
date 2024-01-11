@@ -1,53 +1,9 @@
-
+/**
+ * Styles for the toggle form button.
+ * @class
+ */
 .toggle-form-button {
-  background-color: #8a4ba8; /* Green */
-  color: #fcfafd;
-  /*padding: 10px 20px;*/
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  /*font-size: 16px;*/
-  /*margin-bottom: 20px;*/
-  width: 30%;
-  margin: 0.1rem;
-}
-
-.row {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.form-container-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.form-input {
-  width: 90%;
-  margin-bottom: 20px;
-  border: 1px solid #882be5;
-  border-radius: 4px;
-}
-
-/* You can keep the existing styles for .card and .card-content */
-
-/* Add styles for Update component if needed */
-
-/* app.css */
-
-.app-title {
-  font-size: 60px;
-  margin-bottom: 20px;
-  flex-direction: row;
-  align-items: center;
-  color: #f4f4f5;
-  border-color: #8a4ba8;
-}
-
-.toggle-form-button {
-  background-color: #8a4ba8;
+  background-color: var(--primary-color); /* Use the primary color variable */
   color: #fcfafd;
   border: none;
   border-radius: 8px;
@@ -57,12 +13,20 @@
   transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
 
+/**
+ * Styles for the row layout.
+ * @class
+ */
 .row {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
+/**
+ * Styles for the form container wrapper.
+ * @class
+ */
 .form-container-wrapper {
   width: 100%;
   display: flex;
@@ -70,47 +34,60 @@
   transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }
 
+/**
+ * Styles for the form input.
+ * @class
+ */
 .form-input {
   width: 90%;
   margin-bottom: 20px;
-  border: 1px solid #882be5;
+  border: 1px solid var(--border-color); /* Use the border color variable */
   border-radius: 4px;
   transition: opacity 1s ease-in-out;
 }
 
 /* Media Query for smaller screens */
 @media only screen and (max-width: 600px) {
+  /**
+   * Responsive font size for the app title on smaller screens.
+   * @class
+   */
   .app-title {
     font-size: 40px;
   }
 
+  /**
+   * Responsive width for the toggle form button on smaller screens.
+   * @class
+   */
   .toggle-form-button {
     width: 100%;
     transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
   }
 
+  /**
+   * Responsive width for the form input on smaller screens.
+   * @class
+   */
   .form-input {
     width: 100%;
   }
 }
 
+/**
+ * Styles for the form container.
+ * @class
+ */
 .form-container {
   opacity: 0; /* Start with opacity set to 0 */
   transition: opacity 1s ease-in-out; /* Transition opacity over 1 second with ease-in-out timing function */
   justify-content: center;
 }
 
+/**
+ * Styles for the visible state of the form container.
+ * @class
+ */
 .form-container.visible {
   opacity: 1; /* Set opacity to 1 when the form is visible */
-}
-
-.toggle-form-button {
-  background-color: #8a4ba8;
-  color: #fcfafd;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 30%;
-  margin: 0.1rem;
-  transition: opacity 0.5s ease-in-out; /* Add opacity transition for button */
 }

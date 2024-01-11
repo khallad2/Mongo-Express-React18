@@ -5,9 +5,9 @@
  * @class
  */
 .create-card {
-    background-color: #e6dcf1;
+    background-color: var(--background-light);
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--box-shadow);
     max-width: 100%;
     width: 100%;
     transition: opacity 1s ease-in-out;
@@ -29,7 +29,7 @@
  */
 .form-title {
     font-size: 2.5rem;
-    color: #882be5;
+    color: var(--primary-color);
 }
 
 /**
@@ -75,7 +75,7 @@
 .form-label {
     display: inline-flex;
     margin-bottom: 6px;
-    color: #8a4ba8;
+    color: var(--primary-color);
 }
 
 /**
@@ -85,7 +85,7 @@
 .create-form-input {
     padding: 1rem;
     margin-bottom: 14px;
-    border: 1px solid #423152;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     transition: border-color 0.3s ease-in-out;
     width: 90%;
@@ -115,7 +115,7 @@
 .form-button {
     width: 60%;
     color: #fcfafd;
-    background-color: #8a4ba8;
+    background-color: var(--primary-color);
     border: none;
     cursor: pointer;
     align-items: center;
@@ -126,7 +126,7 @@
  * @class
  */
 .form-button > a {
-    color: #e6dcf1;
+    color: var(--background-light);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
 }
