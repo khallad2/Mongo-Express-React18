@@ -92,12 +92,11 @@ const Create: React.FC = () => {
     return (
         <div id="create-card" className="create-card">
             <div id="create-card-content" className="create-card-content">
-                <div>
                     <h3 id="form-title" className="form-title">Create New Story</h3>
-                    <p className="form-description">
+                    <div className="form-description">
                         Create and join stories!
                         Enter Story Title and Topic then Share or add your sentence.
-                    </p>
+                    </div>
                         <form id="create-form" onSubmit={handleSubmit}>
                             {!storyLink && (
                                 <div>
@@ -159,7 +158,6 @@ const Create: React.FC = () => {
                     </form>
                 </div>
             </div>
-        </div>
     );
 };
 
