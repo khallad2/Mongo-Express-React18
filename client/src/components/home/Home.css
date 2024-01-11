@@ -1,6 +1,7 @@
-/* app.css */
-
-/* Common styles */
+/**
+ * Common styles for flex container.
+ * @class
+ */
 .flex-container {
     display: flex;
     justify-content: center;
@@ -10,6 +11,7 @@
 
 /**
  * Button styles for toggle-form.
+ * @class
  */
 .toggle-form-button {
     background-color: #8a4ba8;
@@ -25,6 +27,7 @@
 
 /**
  * Row container styles.
+ * @class
  */
 .row {
     width: 100%;
@@ -34,6 +37,7 @@
 
 /**
  * Container styles for form elements.
+ * @class
  */
 .form-container-wrapper {
     width: 100%;
@@ -43,6 +47,7 @@
 
 /**
  * Input field styles for forms.
+ * @class
  */
 .form-input {
     width: 100%;
@@ -55,6 +60,7 @@
 
 /**
  * Title styles for the app.
+ * @class
  */
 .app-title {
     font-family: 'Brush Script MT', cursive;
@@ -66,6 +72,7 @@
 
 /**
  * Icon SVG styles inside toggle-form-button.
+ * @class
  */
 .toggle-form-button > .icon-svg {
     width: 20px;
@@ -76,6 +83,7 @@
 
 /**
  * Container styles for form elements with opacity transition.
+ * @class
  */
 .form-container {
     opacity: 0;
@@ -84,6 +92,7 @@
 
 /**
  * Visible state styles for form-container.
+ * @class
  */
 .form-container.visible {
     opacity: 1;
@@ -91,13 +100,12 @@
 
 /**
  * Description text styles for the app.
+ * @class
  */
 .app-description {
     font-size: 1rem;
     color: #e6dcf1;
-    /*margin-top: 5px;*/
     margin-bottom: 20px;
-    /*max-width: 80%;*/
     text-align: center;
     line-height: 1.5;
     font-style: italic;
@@ -106,6 +114,7 @@
 
 /**
  * Hover styles for app-description.
+ * @class
  */
 .app-description:hover {
     opacity: 1;
@@ -116,6 +125,7 @@
 @media only screen and (max-width: 600px) {
     /**
      * Responsive font size for smaller screens.
+     * @class
      */
     .app-title {
         font-size: 40px;
@@ -123,6 +133,7 @@
 
     /**
      * Button width for smaller screens.
+     * @class
      */
     .toggle-form-button {
         width: 100%;
@@ -130,15 +141,10 @@
 
     /**
      * Input field width for smaller screens.
+     * @class
      */
     .form-input {
         width: 100%;
-    }
-
-    /**
-     * Reduce padding for smaller screens.
-     */
-    .form-input {
-        padding: 8px;
+        padding: 8px; /* Reduce padding for smaller screens */
     }
 }

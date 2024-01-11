@@ -1,5 +1,6 @@
 /**
  * Media Query for Smaller Screens
+ * @media
  */
 @media only screen and (max-width: 600px) {
     .form-container {
@@ -17,6 +18,7 @@
 
 /**
  * Input Styles
+ * @class
  */
 .interaction-form-input {
     padding: 1rem;
@@ -53,6 +55,7 @@
 
 /**
  * Button Styles
+ * @class
  */
 button,
 .end-button,
@@ -86,6 +89,7 @@ button:hover,
 
 /**
  * Label Styles
+ * @class
  */
 label {
     font-size: 1.2rem;
@@ -96,6 +100,7 @@ label {
 
 /**
  * Card Styles
+ * @class
  */
 .update-card {
     background-color: var(--background-light);
@@ -117,6 +122,7 @@ label {
 
 /**
  * Title Styles
+ * @class
  */
 .sentence-title {
     font-size: 2.5rem;
@@ -126,6 +132,7 @@ label {
 
 /**
  * Hint Container Styles
+ * @class
  */
 .update-hint-container {
     margin: 3% 1% 0 5%;
@@ -152,6 +159,7 @@ label {
 
 /**
  * Hint Text Styles
+ * @class
  */
 .hint-text {
     font-size: 1rem;
@@ -168,6 +176,7 @@ label {
 
 /**
  * Feedback Message Styles
+ * @class
  */
 .feedback-message {
     border-radius: 8px;
@@ -191,6 +200,7 @@ label {
 
 /**
  * Story Link Styles
+ * @class
  */
 .update-hint-container label {
     font-size: 1rem;
@@ -200,6 +210,7 @@ label {
 
 /**
  * Completed Feedback Styles
+ * @class
  */
 .completed-feedback {
     color: var(--feedback-success);
@@ -210,6 +221,10 @@ label {
     border-color: #e53e3e;
 }
 
+/**
+ * Success Feedback Styles
+ * @class
+ */
 .success-feedback {
     background-color: #190231;
     color: #fff;
@@ -220,6 +235,10 @@ label {
     opacity: 0.8;
 }
 
+/**
+ * Error Feedback Styles
+ * @class
+ */
 .error-feedback {
     background-color: #eca29c;
     color: #fff;
@@ -231,6 +250,7 @@ label {
 
 /**
  * Story Link Styles
+ * @class
  */
 .story-link {
     font-style: italic;
@@ -240,6 +260,7 @@ label {
 
 /**
  * Update Row Styles
+ * @class
  */
 .update-row {
     display: flex;
@@ -250,11 +271,11 @@ label {
 
 /**
  * Form Description Styles
+ * @class
  */
 .update-form-description {
     font-size: 1rem;
     color: #312f30;
-    /*max-width: 600px;*/
     text-align: center;
     line-height: 1.5;
     font-style: italic;
@@ -264,4 +285,3 @@ label {
     justify-self: center;
     align-self: center;
 }
-

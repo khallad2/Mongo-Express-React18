@@ -68,7 +68,6 @@ const Create: React.FC = () => {
             })
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result);
                     // Handle success or error messages as needed
                     if (result.success === true) {
                         setFeedback('Story created successfully! Add a sentence or share with others!');

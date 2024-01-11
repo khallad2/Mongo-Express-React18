@@ -25,28 +25,25 @@ const Update: React.FC<UpdateProps> = () => {
     const [feedbackType, setFeedbackType] = useState<'success' | 'error'>(); // New state for feedback type
     const [isInvitation, setIsInvitation] = useState<boolean>(false);
     const location = useLocation();
+
     useEffect(() => {
-        console.log('useEffect');
         fetchAllStories()
             .then((response) => {
                 setStories(response.data.stories);
                 const fullUrl = window.location.origin + window.location.pathname + window.location.hash;
                 const storyKey = location.hash.slice(1);
-                console.log(response.data.stories)
                 // if storyKey and fullUrl handle url mount
                 storyKey !== '' && fullUrl.includes(storyKey) ? handleMount(response.data.stories, fullUrl) : setIsInvitation(false);
             });
         return () => {}
-    }, [ ]);
+    }, []);
 
     /**
      * Handle mounting of the component in case of provided story link.
      */
     const handleMount =  (stories: IStory[], fullUrl: string) => {
-        console.log('here');
         try {
             const selected = stories.find((story) => story.link === fullUrl);
-            console.log(selected);
             selectStory(selected?._id || '', stories);
             setIsInvitation(true);
         } catch (error) {
@@ -186,8 +183,7 @@ const Update: React.FC<UpdateProps> = () => {
                 throw new Error('Failed to end story');
             }
 
-            const data = await response.json();
-            console.log('Completed Story:', data);
+            await response.json();
             setIsStoryCompleted(true);
             setFeedbackMessage('Story is completed successfully, Now you can Reveal Narrative'); // Feedback message for success
         } catch (error) {
@@ -281,15 +277,22 @@ const Update: React.FC<UpdateProps> = () => {
                             >
                                 Submit Sentence
                             </button>
-                            {selectedStory.sentences.length !== 0 && (
-                                <button
-                                    id="end-button"
-                                    className={isStoryCompleted ? 'disabled' : 'end-button'}
-                                    onClick={handleEndStory}
-                                    disabled={isStoryCompleted}
-                                >
-                                    End Story
-                                </button>
+                            {selectedStory && !isStoryCompleted &&(
+                                <div className='update-row '>
+                                    <button
+                                        id="end-button"
+                                        className={isStoryCompleted ? 'disabled' : 'end-button'}
+                                        onClick={handleEndStory}
+                                        disabled={isStoryCompleted}
+                                    >
+                                        End Story
+                                    </button>
+                                    <div>
+                                        <div>
+                                            <InfoCircle title={'share'} description={storyLink}/>
+                                        </div>
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </form>
@@ -314,7 +317,7 @@ const Update: React.FC<UpdateProps> = () => {
                         {showNarrative ? 'Hide Narrative' : 'Reveal Narrative'}
                     </button>
                 )}
-                {selectedStory && (
+                {selectedStory && isStoryCompleted &&(
                     <div>
                         <div>
                             <InfoCircle title={'share'} description={storyLink}/>

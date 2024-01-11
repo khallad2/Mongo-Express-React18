@@ -1,4 +1,9 @@
 /* General styles */
+
+/**
+ * Styles for the create card.
+ * @class
+ */
 .create-card {
     background-color: #e6dcf1;
     border-radius: 8px;
@@ -9,47 +14,74 @@
     padding: 1rem;
 }
 
+/**
+ * Styles for the content inside the create card.
+ * @class
+ */
 .create-card-content {
     position: relative;
     width: auto;
 }
 
-/* Title styles */
+/**
+ * Styles for form title.
+ * @class
+ */
 .form-title {
     font-size: 2.5rem;
     color: #882be5;
 }
 
-/* Form container styles */
+/**
+ * Styles for visible form container.
+ * @class
+ */
 .form-container.visible {
     height: auto;
     margin-top: 20px;
 }
 
+/**
+ * Styles for hidden form container.
+ * @class
+ */
 .form-container.hidden {
     height: 0;
     margin-top: 0;
     overflow: hidden;
 }
 
-/* Card styles */
+/**
+ * Styles for the card with opacity transition.
+ * @class
+ */
 .card {
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
+/**
+ * Styles for the visible state of card inside form container.
+ * @class
+ */
 .form-container.visible .card {
     opacity: 1;
 }
 
-/* Label styles */
+/**
+ * Styles for form label.
+ * @class
+ */
 .form-label {
     display: inline-flex;
     margin-bottom: 6px;
     color: #8a4ba8;
 }
 
-/* Input styles */
+/**
+ * Styles for create form input.
+ * @class
+ */
 .create-form-input {
     padding: 1rem;
     margin-bottom: 14px;
@@ -59,29 +91,40 @@
     width: 90%;
 }
 
+/**
+ * Styles for invalid create form input.
+ * @class
+ */
 .create-form-input.invalid {
     border-color: #e53e3e;
 }
 
-/* Error message styles */
+/**
+ * Styles for error messages.
+ * @class
+ */
 .error-message {
     color: #e53e3e;
     margin-top: 6px;
 }
 
-/* Button styles */
+/**
+ * Styles for form button.
+ * @class
+ */
 .form-button {
     width: 60%;
-    /*padding: 1rem;*/
-    /*font-size: 1rem;*/
     color: #fcfafd;
     background-color: #8a4ba8;
     border: none;
-    /*border-radius: 4px;*/
     cursor: pointer;
     align-items: center;
 }
 
+/**
+ * Styles for form button link.
+ * @class
+ */
 .form-button > a {
     color: #e6dcf1;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -90,31 +133,49 @@
 
 /* Media Query for smaller screens */
 @media only screen and (max-width: 600px) {
+    /**
+     * Responsive styles for form container on smaller screens.
+     * @class
+     */
     .form-container {
         flex-direction: column;
         align-items: stretch;
     }
 
+    /**
+     * Responsive font size for form title on smaller screens.
+     * @class
+     */
     .form-title {
         font-size: 2rem;
     }
 
+    /**
+     * Responsive width for create form input on smaller screens.
+     * @class
+     */
     .create-form-input {
         width: 80%;
     }
 }
 
-/* Success feedback styles */
+/**
+ * Styles for success feedback.
+ * @class
+ */
 .success-feedback {
     color: #fcfafd;
     background-color: #190231;
     margin-top: 10px;
 }
 
+/**
+ * Styles for form description.
+ * @class
+ */
 .form-description {
     font-size: 1rem;
-    color: #312f30; /* Dark gray text color */
-    /*margin-top: 10px;*/
+    color: #312f30;
     text-align: center;
     line-height: 1.5;
     font-style: italic;
@@ -124,11 +185,19 @@
     position: relative;
 }
 
+/**
+ * Hover styles for form description.
+ * @class
+ */
 .form-description:hover {
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
 }
 
+/**
+ * Styles for share sentence button.
+ * @class
+ */
 .share-sentence-button {
     background-color: var(--primary-color);
     color: #fcfafd;
@@ -140,11 +209,20 @@
     width: 100%;
     margin-left: 10rem;
 }
+
+/**
+ * Styles for link inside share sentence button.
+ * @class
+ */
 .share-sentence-button > a {
     text-decoration: none;
     color: #fcfafd;
 }
 
+/**
+ * Styles for submit button.
+ * @class
+ */
 .submit-button {
     background-color: var(--primary-color);
     color: #fcfafd;
@@ -157,29 +235,40 @@
     width: auto;
 }
 
-/* Feedback Message Styles */
+/**
+ * Styles for create feedback message.
+ * @class
+ */
 .create-feedback-message {
-    /*padding: 10px;*/
-    /*border-radius: 8px;*/
-    /*margin-top: 10px;*/
     width: auto;
-    /*margin-left: 1rem;*/
     position: relative;
     justify-content: center;
     height: auto;
     margin: auto;
 }
 
+/**
+ * Styles for success create feedback message.
+ * @class
+ */
 .create-feedback-message.success {
     background-color: var(--feedback-success);
     color: #fff;
 }
 
+/**
+ * Styles for error create feedback message.
+ * @class
+ */
 .create-feedback-message.error {
     background-color: var(--feedback-error);
     color: #fff;
 }
 
+/**
+ * Styles for row layout.
+ * @class
+ */
 .create-row {
     display: flex;
     width: 100%;
@@ -187,6 +276,10 @@
     flex-direction: row;
 }
 
+/**
+ * Styles for column layout.
+ * @class
+ */
 .create-col {
     display: flex;
     width: 100%;

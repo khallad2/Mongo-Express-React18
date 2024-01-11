@@ -1,8 +1,16 @@
+/**
+ * Container for the information circle and hint.
+ * @class
+ */
 .info-circle-container {
     position: relative;
     display: inline-block;
 }
 
+/**
+ * Information circle style.
+ * @class
+ */
 .info-circle {
     display: flex;
     align-items: center;
@@ -18,6 +26,10 @@
     width: 100%;
 }
 
+/**
+ * Container for the information hint.
+ * @class
+ */
 .info-hint-container {
     position: absolute;
     top: 100%;
@@ -25,31 +37,54 @@
     transform: translateX(-50%) translateY(-120%);
     background-color: #050505;
     color: #fcfafd;
-    padding: 8px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgb(5, 5, 5);
-    /*font-size: 16px;*/
     white-space: unset;
     display: none; /* Hidden by default */
-    /*width: 20rem;*/
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 10%;
 }
 
+/**
+ * Show the hint container when the information circle is focused or the hint container is not focused.
+ */
 .info-circle:focus + .info-hint-container,
 .info-hint-container:not(:focus-within) {
     display: block;
 }
 
-.close-button{
-    width: 20%;
+/**
+ * Close button style.
+ * @class
+ */
+.close-button {
+    top: 0;
+    width: 10%;
     color: white;
     cursor: pointer;
     background-color: #8e44ad;
-    padding: 2% 2% 2% 2%;
-    margin: 1% 1% 1% 1%;
-    border-radius: 2rem;
+    text-align: center;
     position: relative;
+}
 
+/**
+ * Title style for the hint.
+ * @class
+ */
+.hint-title {
+    background-color: #8e44ad;
+    width: 100%;
+    height: 1.5rem;
+}
+
+/**
+ * Row layout for information content.
+ * @class
+ */
+.info-row {
+    flex-direction: row;
+    position: relative;
+    display: flex;
 }

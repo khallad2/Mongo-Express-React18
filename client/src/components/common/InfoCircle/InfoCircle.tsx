@@ -23,7 +23,10 @@ const InfoCircle: React.FC<InfoCircleProps> = ({ description, title }) => {
                 {title}
             </div>
             {showHint && <div className="info-hint-container">
-                <div onClick={handleCloseClick} className='close-button'>x</div>
+                <div className="info-row">
+                    <div onClick={handleCloseClick} className='close-button'>x</div>
+                    <div className='hint-title'>Copy Link</div>
+                </div>
                 {description}
             </div>}
         </div>
