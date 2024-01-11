@@ -171,11 +171,14 @@ const Update: React.FC<UpdateProps> = () => {
 
         if (selectedStory?.sentences.length === 0) {
             // End story button only visible when selectedStory has at least one sentence
+            setFeedbackMessage('Story can not be ended!! because it has no sentences yet');
+            setFeedbackType('error');
             return;
         }
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/stories/${selectedStory?._id}/end`, {
+            const response = await fetch(
+                `${import.meta.env.VITE_SERVER_URL}/stories/${selectedStory?._id}/end`, {
                 method: 'POST',
             });
 
@@ -186,10 +189,12 @@ const Update: React.FC<UpdateProps> = () => {
             await response.json();
             setIsStoryCompleted(true);
             setFeedbackMessage('Story is completed successfully, Now you can Reveal Narrative'); // Feedback message for success
+            setFeedbackType('success');
         } catch (error) {
             console.error('Error ending story:', error);
             setIsStoryCompleted(false);
             setFeedbackMessage('Failed to end story'); // Feedback message for error
+            setFeedbackType('error');
         }
     };
     return (
@@ -219,8 +224,9 @@ const Update: React.FC<UpdateProps> = () => {
                         </div>
                     )}
                 </div>
+
                 {/* Display feedback message with appropriate style */}
-                {selectedStory?.isComplete && (
+                {isStoryCompleted &&(
                     <div id="story-complete-message" className="success-feedback">
                         This story is completed, Reveal Narrative now!
                     </div>
