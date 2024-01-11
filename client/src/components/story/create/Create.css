@@ -136,7 +136,8 @@
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    margin: 20px;
+    width: 100%;
+    margin-left: 10rem;
 }
 .share-sentence-button > a {
     text-decoration: none;
@@ -164,6 +165,8 @@
     /*margin-left: 1rem;*/
     position: relative;
     justify-content: center;
+    height: auto;
+    margin: auto;
 }
 
 .create-feedback-message.success {

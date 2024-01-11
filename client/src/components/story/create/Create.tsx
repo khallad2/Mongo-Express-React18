@@ -41,7 +41,6 @@ const Create: React.FC = () => {
      */
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setFeedback('');
 
         // Custom validation logic
         const newErrors: { [key: string]: string } = {};
@@ -99,48 +98,52 @@ const Create: React.FC = () => {
                         Create and join stories!
                         Enter Story Title and Topic then Share or add your sentence.
                     </p>
-                    <form id="create-form" onSubmit={handleSubmit}>
-                        <div id="title-group" className="form-group">
-                            <input
-                                id="title-input"
-                                type="text"
-                                name="title"
-                                value={formData.title}
-                                onChange={handleInputChange}
-                                className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
-                                placeholder={'Add Title*'}
-                            />
-                        </div>
+                        <form id="create-form" onSubmit={handleSubmit}>
+                            {!storyLink && (
+                                <div>
+                                    <div id="title-group" className="form-group">
+                                        <input
+                                            id="title-input"
+                                            type="text"
+                                            name="title"
+                                            value={formData.title}
+                                            onChange={handleInputChange}
+                                            className={`create-form-input ${isValidInput ? '' : 'invalid'}`}
+                                            placeholder={'Add Title*'}
+                                        />
+                                    </div>
 
-                        <div id="topic-group" className="form-group">
-                            <input
-                                id="topic-input"
-                                type="text"
-                                name="topic"
-                                value={formData.topic}
-                                onChange={handleInputChange}
-                                className="create-form-input"
-                                placeholder={'Add Topic'}
-                            />
-                        </div>
+                                    <div id="topic-group" className="form-group">
+                                        <input
+                                            id="topic-input"
+                                            type="text"
+                                            name="topic"
+                                            value={formData.topic}
+                                            onChange={handleInputChange}
+                                            className="create-form-input"
+                                            placeholder={'Add Topic'}
+                                        />
+                                    </div>
+                                </div>
+                            )}
                         {feedback && (
                             <div
                                 id="feedback-message"
                                 className={`create-feedback-message ${feedbackType === 'success' ? 'success-feedback' : 'error-feedback'}`}
                             >
                                 {feedback}
-                                {storyLink &&(
-                                    <div className=''>
-                                        {/*<span>Copy link to share</span>*/}
-                                        <InfoCircle title={'Share'} description={storyLink}/>
-                                    </div>
-                                )}
                             </div>
                         )}
 
                         <div className='create-col'>
                         {storyLink !== '' && (
                             <div className='create-row'>
+                                {storyLink &&(
+                                    <div className='form-group'>
+                                        {/*<span>Copy link to share</span>*/}
+                                        <InfoCircle  title={'Share'} description={storyLink}/>
+                                    </div>
+                                )}
                                 <button className="share-sentence-button">
                                     <a href={storyLink} target='_blank' rel='noopener noreferrer' >Add Sentence or Share with others
                                     </a>
