@@ -50,6 +50,12 @@ Acceptance Criteria:
    - read completed stories and share links
    - contribute and share link and view last sentence of non-completed story
 
+### Prerequisites
+Mongo-db should be installed locally
+
+Typescript and ts-node for Backend:
+    npm install -g typescript
+    npm install -g ts-node
 
 ## Installation
 
@@ -93,7 +99,8 @@ Backend Testing using jest
     0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest
     1. run cmd: npm run test // i have provided exmples of test files but couldn't establish doing tests because of time
 
-
+Frontend Testing using jest
+============
 ### My planned ToDo List
 - Frontend-testing please note: Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
 - Authorization, login, logout, delete story
@@ -102,6 +109,9 @@ Backend Testing using jest
 - compatibility with firefox and edge and safari now is only Chrome browser
 
 
-Thanks for your time
+Thanks for your time and giving me the chance to go through this amazing task
+i Enjoyed it and even i could learn new things and implement them right away .
+
+Thank you again i could learn new thing and implement them right away .
 Khallad Sharafeldin
 khallad_3@hotmail.com
