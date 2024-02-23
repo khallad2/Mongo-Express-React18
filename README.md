@@ -1,7 +1,6 @@
 Here you will find an Overview, Installation steps, and prerequisites for running the project
 
-## Overview:
-   # Stack: 
+## Stack: 
    React18-ts + Vite, Express + typescript, Mongo-DB
 
 ## implemented User stories
