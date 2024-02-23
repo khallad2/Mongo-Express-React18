@@ -1,10 +1,10 @@
-Thanks for giving me the chance to have this challenge. 
-Here you find an Overview, Installation steps and prerequisites to run the project
+Here you will find an Overview, Installation steps, and prerequisites for running the project
 
-Overview:
-   Stack: React18-ts + Vite, Express + typescript, Mongo-db
+### Overview:
+   # Stack: 
+   React18-ts + Vite, Express + typescript, Mongo-DB
 
-## implemented User stories from the provided challenge description
+## implemented User stories
 User Story 1: 
 As a Player, I Want to Create a New Story
 Acceptance Criteria:
@@ -15,8 +15,8 @@ User Story 2:
 As a Player, I Want to Add a Sentence to the Story
 Acceptance Criteria:
 - Once in a story, users can see the previous sentence contributed by another player.
-- There's an input field where users can type and submit their sentence.
-- The sentence submission is processed in real-time, and the updated story is displayed to all participants.
+- There's an input field where users can type and submit their sentences.
+- The sentence submission is processed in real time, and the updated story is displayed to all participants.
 
 User Story 3: 
 As a Player, I want to Join other Stories.
@@ -31,24 +31,24 @@ As a Player, I Want to Invite Friends to Join My Story Acceptance Criteria:
 User Story 5: 
 As a Player, I Want to End the Story and Reveal the Completed Narrative
 Acceptance Criteria:
-- Players have the option to end a story, signalling that the narrative is complete.
+- Players can end a story, signaling that the narrative is complete.
 - Upon ending, the entire story, including all contributed sentences, is presented in a shareable format.
 
-### Assumptions: During Development i had to have some assumptions 
- - User can create sentence after story is created (Create story then click Join and choose story or click on story link)
- - User Can Share or Invite by click on Share -> copy link then share it with others
- - User can Invite anyone using unique story link to add sentence to non-completed story
- - User can Invite anyone using unique story link to end non-completed story
- - User can Invite anyone using unique story link to view completed Narrative
- - When user is invited to story via link he can not choose other stories from the menu on that link
- - User can join non-completed story to add sentence at a time without any restrictions of sentence length or number of sentences
- - User can join non-completed story and see last sentence using shared link or by choosing from menu-select story
- - User can join non-completed story to end the story and reveal the Narrative and share link
- - user can join and end non-completed story only when it has at least one sentence
- - User can join completed story to view the whole Narrative or share link
+### Assumptions: 
+ - User can create a sentence after a story is created (Create story then click Join and choose a story or click on story link)
+ - User Can Share or Invite by click on the Share -> copy link and then share it with others
+ - User can Invite anyone using a unique story link to add a sentence to the non-completed story
+ - User can Invite anyone using a unique story link to end the non-completed story
+ - User can Invite anyone using a unique story link to view the completed Narrative
+ - When a user is invited to a story via a link he can not choose other stories from the menu on that link
+ - User can join a non-completed story to add one sentence at a time without any restrictions of sentence length or number of sentences
+ - User can join a non-completed story and see the last sentence using a shared link or by choosing from the menu-select story
+ - User can join a non-completed story to end the story reveal the Narrative and share link
+ - User can join and end a non-completed story only when it has at least one sentence
+ - User can join the completed story to view the whole Narrative or share the link
  - User can View all Stories and to
    - read completed stories and share links
-   - contribute and share link and view last sentence of non-completed story
+   - contribute and share links and view the last sentence of a non-completed story
 
 ### Prerequisites
 Mongo-db should be installed locally
@@ -89,29 +89,21 @@ Backend setup Terminal-2 (dir: challenge/server)
 
 Frontend setup Terminal-3 (dir: challenge/client)
 =============
-    0. to setup react-ts vite project i followed https://vitejs.dev/guide/#scaffolding-your-first-vite-project
+    0. to setup react-ts vite project I followed https://vitejs.dev/guide/#scaffolding-your-first-vite-project
     1. run cmd npm install
-    2. from Backend setup step 3 copy the Server url and put it into /client/.env
+    2. from Backend setup step 3 copy the server URL and put it into /client/.env
     3. npm run dev
 
-Backend Testing using jest
+Backend Testing using Jest
 ============
-    0. i followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest
-    1. run cmd: npm run test // i have provided exmples of test files but couldn't establish doing tests because of time
+    0. I followed https://github.com/kulshekhar/ts-jest?tab=readme-ov-file#getting-started to install ts-jest
+    1. run cmd: npm run test //I have provided examples of test files but couldn't establish doing tests because of time
 
-Frontend Testing using jest
+Frontend Testing using Jest
 ============
-### My planned ToDo List
+### To Do List
 - Frontend-testing please note: Vite+jest is not fully supported https://jestjs.io/docs/getting-started#using-vite
 - Authorization, login, logout, delete story
 - security (middleware)
-- Users model and management
-- compatibility with firefox and edge and safari now is only Chrome browser
-
-
-Thanks for your time and giving me the chance to go through this amazing task
-i Enjoyed it and even i could learn new things and implement them right away .
-
-Thank you again i could learn new thing and implement them right away .
-Khallad Sharafeldin
-khallad_3@hotmail.com
+- User model and management
+- compatibility with firefox and edge and Safari now is only Chrome browser
